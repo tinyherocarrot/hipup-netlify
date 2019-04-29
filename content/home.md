@@ -11,4 +11,8 @@ cats:
 ---
 Welcome to my awesome page about cats of the internet. 
 
-This page is built with NextJS, and content is managed in Netlify CMS
+This page is built with NextJS, and content is managed in Netlify CMS.
+
+# Andrew is a winner! 
+
+Everyone loves him, just ask his mom!
