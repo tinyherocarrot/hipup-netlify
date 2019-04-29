@@ -2,7 +2,7 @@ import { withRouter } from 'next/router'
 import Layout from '../components/Layout.js'
 
 
-//TODO: figure out how to do some code fetching (import MD file) after 
+//TODO: figure out how to do some code fetching (import MD file) after next router obj params
 
 const Content = withRouter(props => (
   <div>
