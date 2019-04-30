@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import content from '../content/home.md';
+// import content from '../content/home.md';
 import Layout from '../components/Layout.js'
 import Link from 'next/link'
 
