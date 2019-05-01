@@ -15,14 +15,7 @@ collections:
       file: "content/_pages/home.md"
       fields:
         - { label: "Title", name: "title", widget: "string"}
-        - { label: "Publish Date", name: "date", widget: "datetime" }
-        - { label: "Body", name: "body", widget: "markdown"}
-        - label: 'Cats'
-          name: "cats"
-          widget: list
-          fields:
-            - { label: "Name", name: "name", widget: "string"}
-            - { label: "Description", name: "description", widget: "text"}
+        - { label: "Mission", name: "mission", widget: "text" }
     - label: "Contact"
       name: "contact"
       file: "content/_pages/contact.md"
@@ -37,6 +30,7 @@ collections:
             - { label: "Name", name: "name", widget: "string"}
             - { label: "Description", name: "description", widget: "text"}
   - label: "Current Projects"
+    label_singular: "Current Project"
     name: "current_projects"
     folder: "content/_projects"
     filter: { field: "current", value: true }
@@ -46,20 +40,26 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Current", name: "current", widget: "boolean" }
       - label: "Eligibilty"
-        label_singular: "eligibility"
+        label_singular: "requirement"
         name: "requirements"
         widget: "list"
         fields:
           - { label: "Requirement", name: "requirement", widget: "text" }
-      - label: "Team"
+      - label: "Team Members"
+        name: "team_members"
         label_singular: "member"
-        name: "team"
-        widget: "relation"
-        collection: "team"
-        multiple: true
-        searchFields: ["title", "project"]
-        valueFields:  "project"
+        widget: "list"
+        fields:
+          - label: "Member"
+            name: "member"
+            widget: "relation"
+            collection: "team"
+            # multiple: true
+            displayFields: ["title", "project"] 
+            searchFields: ["title", "project"]
+            valueFields:  "title"
   - label: "Past Projects"
+    label_singular: "Past Project"
     name: "past_projects"
     folder: "content/_projects"
     filter: { field: "current", value: false }
@@ -75,7 +75,7 @@ collections:
         fields:
           - { label: "Requirement", name: "requirement", widget: "text"}
   - label: "Team"
-    label_singular: "member"
+    label_singular: " Team Member"
     name: "team"
     folder: "content/_team"
     widget: "object"
@@ -83,5 +83,15 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Project", name: "project", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Photo", name: "photo", widget: "image", default: "" }
       - { label: "Public", name: "public", widget: "boolean", default: true }
+  - label: "Publications"
+    label_singular: "Publication"
+    name: "publications"
+    folder: "content/_publications"
+    create: true
+    widget: list
+    fields:
+      - { label: "Title", name: "title", widget: string }
+      - { label: "Date Published", name: "date_published", widget: date }
+      - { label: "Description", name: "description", widget: text }
