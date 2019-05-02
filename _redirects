@@ -1,1 +1,1 @@
-/admin           /static/admin
+/admin/*           /static/admin/:splat

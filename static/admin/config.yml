@@ -83,7 +83,7 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Project", name: "project", widget: "string" }
-      - { label: "Photo", name: "photo", widget: "image", default: "" }
+      - { label: "Photo", name: "photo", widget: "image", default: "/static/img/avatar.png" }
       - { label: "Public", name: "public", widget: "boolean", default: true }
   - label: "Publications"
     label_singular: "Publication"
