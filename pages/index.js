@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import content from '../content/home.md';
-import Layout from '../components/Layout.js'
+// import content from '../content/_pages/home.md';
+import Layout from '../components/Layout'
 import Link from 'next/link'
 
 function getPosts() {

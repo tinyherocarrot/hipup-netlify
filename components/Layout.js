@@ -1,15 +1,21 @@
+import React from "react"
 import Header from './Header'
+import Footer from './Footer'
 
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-  border: '1px solid #DDD'
-}
+const Layout = ({ children }) => (
+  <div>
+    <Header className="page-container"/>
+    {children}
+    <Footer />
 
-const Layout = props => (
-  <div style={layoutStyle}>
-    <Header />
-    {props.children}
+    <style jsx>{`
+      .page-container {}
+    `}</style>
+    <style jsx global>{`
+      body {
+        text-align: center;
+      }
+    `}</style>
   </div>
 )
 
