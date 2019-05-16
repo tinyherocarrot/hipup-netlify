@@ -3,8 +3,14 @@ import React from "react"
 const Footer = () => {
   return (
     <footer className="footer-container">
-      <div>social links</div>
-      <address>contact info</address>
+      <div>PHI LOGO</div>
+      <address>
+        <p>
+          Public Health Institute <br />
+          555 12th St, <br />
+          Oakland, CA 94607 <br />
+        </p>
+      </address>
 
       <style jsx>
         {`
@@ -13,7 +19,7 @@ const Footer = () => {
             position: absolute;
             bottom: 0;
             padding: 1rem;
-            height: 50px;
+            height: auto;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -35,7 +41,7 @@ const Footer = () => {
         body {
           position: relative;
           margin: 0;
-          padding-bottom: 6rem;
+          padding-bottom: 8rem;
           min-height: 100%;
         }
       `}</style>

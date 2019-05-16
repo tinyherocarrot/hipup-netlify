@@ -5,20 +5,33 @@ import Footer from './Footer'
 const Layout = ({ children }) => (
   <div>
     <Header />
-    {children}
+    <div className="content">
+      {children}
+    </div>
     <Footer />
 
     <style jsx>{`
-      .page-container {
+      .content {
+        box-sizing: border-box;
+        max-width: 100%;
       }
     `}</style>
     <style jsx global>{`
-      body {
-        text-align: center;
-      }
+    h1 {
+      text-align: center;
+    }
       main {
-        margin: 0 8rem;
+        max-width: 900px;
+        text-align: center;
+        margin: 0 auto;
       }
+
+      @media only screen and (max-width: 768px) {
+        main {
+          margin: 0 1rem;
+        }
+      }
+
       html {
         height:100%; 
         padding:0px;

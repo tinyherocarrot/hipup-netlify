@@ -67,7 +67,8 @@ class ContactForm extends Component<Props, State> {
               display: flex;
               flex-direction: column;
               gap: 1em;
-              max-width: 400px
+              max-width: 400px;
+              margin: 0 auto;
             }
           `}
         </style>
