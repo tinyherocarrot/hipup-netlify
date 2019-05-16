@@ -32,6 +32,7 @@ const PostLink = ({ post }) => (
         opacity: 0.6;
       }
     `}</style>
+    
   </li>
 )
 

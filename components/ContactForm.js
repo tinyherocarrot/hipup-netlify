@@ -13,7 +13,7 @@ type State = {
 };
 
 class ContactForm extends Component<Props, State> {
-  // TODO: fill in a default email?
+  // TODO: fill in a defaultProps email?
   static defaultProps = {
     addressTo: "contact@gmail.com"
   }

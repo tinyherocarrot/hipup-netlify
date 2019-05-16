@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 import dynamic from 'next/dynamic'
 
-
 const NavLinks = dynamic(
   () => import('./NavLinks'),
   {
@@ -23,14 +22,15 @@ const Header = () => (
     <style jsx>{`
       .header-container {
         width: 100%;
-        height: 2em;
+        height: 3rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border: 2px solid black;
       }
 
-      .logo {}
+      .logo {
+        margin-left: 1rem
+      }
     `}
     </style>
   </div>

@@ -40,7 +40,6 @@ const NavLinks = () => {
 
       <style jsx>{`
         .nav-links {
-          background-color: ${width > 450 ? "pink" : "green"};
         }
 
         a {
