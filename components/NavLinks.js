@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 
 const navLinks = [
-  { name: "Contact", path: "/contact" },
-  { name: "CURRENT PROJECTS", path: "/" },
-  { name: "PAST PROJECTS", path: "/" },
-  { name: "PUBLICATIONS", path: "/" }
+  { name: "Projects", path: "/allProjects" },
+  { name: "Publications", path: "/publications" }
 ]
 
 const NavLinks = () => {
@@ -46,7 +44,7 @@ const NavLinks = () => {
           color: black;
           text-decoration: none;
           font-family: "Arial";
-          margin-right: 15px;
+          margin-right: 2rem;
           pointer: cursor;
         }
 

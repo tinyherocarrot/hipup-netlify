@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import Button from "./Button"
 
 type Props = {
   addressTo: string
@@ -55,11 +56,11 @@ class ContactForm extends Component<Props, State> {
         <textarea
           type="text"
           name="message"
-          placeholder="What's the message?"
+          placeholder="Yes let's connect! Please reach out to me at email@address.com"
           value={message}
           onChange={this.changeHandler}
         />
-        <button onClick={this.submitHandler}> Submit </button>
+        <Button onClick={this.submitHandler}> Submit </Button>
 
         <style jsx>
           {`

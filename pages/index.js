@@ -1,9 +1,13 @@
 import React, { Component } from "react"
-// import content from '../content/_pages/home.md';
-import Layout from "../components/Layout"
 import Link from "next/link"
+import Head from "next/head"
 
-function getPosts() {
+import Layout from "../components/Layout"
+import Button from "../components/Button"
+import ProjectLink from "../components/ProjectLink"
+// import content from '../content/_pages/home.md';
+
+function getProjects() {
   return [
     { id: "hello-nextjs", title: "Hello Next.js" },
     { id: "learn-nextjs", title: "Learn Next.js is awesome" },
@@ -13,62 +17,51 @@ function getPosts() {
   ]
 }
 
-const PostLink = ({ post }) => (
-  <li>
-    <Link as={`/p/${post.id}`} href={`/post?title=${post.title}`}>
-      <a>{post.title}</a>
-    </Link>
-    <style jsx>{`
-      li {
-        list-style: none;
-        margin: 5px 0;
-      }
-
-      a {
-        text-decoration: none;
-        color: blue;
-        font-family: "Arial";
-      }
-
-      a:hover {
-        opacity: 0.6;
-      }
-    `}</style>
-  </li>
-)
-
-export default function Blog() {
+export default function Homepage() {
   return (
-    <Layout>
-      <section className="homepage-hero">
-        <div className="homepage-hero-overlay">
-          <h1>Health Intervention Projects for Underserved Populations</h1>
-          <div>
-            <button>Check out our work</button>
-            <button>Explore past projects</button>
-          </div>
-        </div>
-        <img
-          className="homepage-hero-img"
-          src="https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image"
-          alt=""
+    <>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css?family=Arapey|Noto+Sans+TC:300,500"
+          rel="stylesheet"
         />
-      </section>
-      <h1>Get Involved</h1>
-      <section className="cards">
-        {getPosts().map((post, i) => (
-          <article className="card" key={i}>
-            <img
-              className="article-img"
-              src="http://placekitten.com/305/205"
-              alt=" "
-            />
-            <h2 className="article-title">
-              <PostLink key={post.id} post={post} />
-            </h2>
-          </article>
-        ))}
-      </section>
+      </Head>
+      <Layout>
+        <section className="homepage-hero">
+          <div className="homepage-hero-overlay">
+            <h1>Health Intervention Projects for Underserved Populations</h1>
+            <Link href={`/allProjects`}>
+              <Button>Check out our work</Button>
+            </Link>
+          </div>
+          <img
+            className="homepage-hero-img"
+            src="https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image"
+            alt=""
+          />
+        </section>
+        <h1>What we do</h1>
+        <section className="centered-margined">
+          <p>
+            This is where the mission statement will go. Lorem ipsum dolor amet
+            waistcoat small batch brunch, jianbing master cleanse air plant
+            bitters art party meditation photo booth palo santo selfies.
+          </p>
+        </section>
+        <h1>Get Involved</h1>
+        <section className="cards">
+          {getProjects().map((project, i) => (
+            <ProjectLink key={project.id} project={project} />
+          ))}
+        </section>
+        <section>
+          <img
+            className=""
+            src="https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic"
+            alt="hipup-group-photo"
+          />
+        </section>
+      </Layout>
 
       <style jsx>{`
         .homepage-hero {
@@ -98,10 +91,9 @@ export default function Blog() {
         }
 
         h1 {
-          font-family: "Arial";
         }
       `}</style>
-    </Layout>
+    </>
   )
 }
 

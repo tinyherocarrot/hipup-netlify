@@ -21,6 +21,7 @@ const Header = () => (
 
     <style jsx>{`
       .header-container {
+        padding: 2.2rem;
         width: 100%;
         height: 3rem;
         display: flex;

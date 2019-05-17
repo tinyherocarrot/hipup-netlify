@@ -11,10 +11,11 @@ module.exports = {
     exportPathMap: async (defaultPathMap) => {
         return {
             '/': { page: '/' },
-            '/contact': { page: '/contact' },
-            '/p/hello-nextjs': { page: '/post', query: { title: 'Hello Next.js' } },
-            '/p/learn-nextjs': { page: '/post', query: { title: 'Learn Next.js is awesome' } },
-            '/p/deploy-nextjs': { page: '/post', query: { title: 'Deploy apps with Zeit' } },
+            '/projects': { page: '/allProjects' },
+            '/p/hello-nextjs': { page: '/project', query: { title: 'Hello Next.js' } },
+            '/p/learn-nextjs': { page: '/project', query: { title: 'Learn Next.js is awesome' } },
+            '/p/deploy-nextjs': { page: '/project', query: { title: 'Deploy apps with Zeit' } },
+            '/publications': { page: '/publications' },
         }
     }
 }

@@ -15,11 +15,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
+    "/allProjects": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/post": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

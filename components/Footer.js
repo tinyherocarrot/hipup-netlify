@@ -24,6 +24,10 @@ const Footer = () => {
             display: flex;
             justify-content: space-between;
           }
+          address {
+            text-align: right;
+            font-style: normal;
+          }
         `}
       </style>
       <style jsx global>{`
@@ -44,6 +48,7 @@ const Footer = () => {
           padding-bottom: 8rem;
           min-height: 100%;
         }
+        
       `}</style>
     </footer>
   )
