@@ -29,9 +29,9 @@ collections:
           fields:
             - { label: "Name", name: "name", widget: "string"}
             - { label: "Description", name: "description", widget: "text"}
-  - label: "Current Projects"
-    label_singular: "Current Project"
-    name: "current_projects"
+  - label: "All Projects"
+    label_singular: "Project"
+    name: "projects"
     folder: "content/_projects"
     filter: { field: "current", value: true }
     create: true
@@ -39,6 +39,8 @@ collections:
       - { label: "Title", name: "title", widget: "string", tagname: "h1" }
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Current", name: "current", widget: "boolean" }
+      - { label: "Project Logo", name: "logo", widget: "image" }
+      - { label: "Project Image", name: "cover image", widget: "image" }
       - label: "Eligibilty"
         label_singular: "requirement"
         name: "requirements"
@@ -51,30 +53,13 @@ collections:
         widget: "list"
         fields:
           - label: "Member"
-            name: "member"
+            name: "title"
             widget: "relation"
             collection: "team"
-            # multiple: true
             displayFields: ["title", "project"] 
             searchFields: ["title", "project"]
-            valueFields:  "title"
-  - label: "Past Projects"
-    label_singular: "Past Project"
-    name: "past_projects"
-    folder: "content/_projects"
-    filter: { field: "current", value: false }
-    create: true
-    fields:
-      - { label: "Title", name: "title", widget: "string", tagname: "h1" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Current", name: "current", widget: "boolean" }
-      - label: "Eligibilty"
-        label_singular: "eligibility"
-        name: "requirements"
-        widget: "list"
-        fields:
-          - { label: "Requirement", name: "requirement", widget: "text"}
-  - label: "Team"
+            valueField:  "title"
+  - label: "Team Members"
     label_singular: " Team Member"
     name: "team"
     folder: "content/_team"

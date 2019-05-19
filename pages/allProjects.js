@@ -1,4 +1,6 @@
 import React from "react"
+import Head from "next/head"
+import { withRouter } from "next/router"
 
 import Layout from "../components/Layout"
 import ProjectLink from "../components/ProjectLink"
@@ -13,9 +15,14 @@ function getProjects() {
   ]
 }
 
-const Projects = () => {
-  return (
+const Projects = withRouter(({ router: { query: { title } } }) => (
     <Layout>
+      <Head>
+        <title>
+          HIPUP | {title}
+        </title>
+      </Head>
+
       <div className="project-filters">
         <a>Current</a>
         {"  |  "}
@@ -41,10 +48,11 @@ const Projects = () => {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
           grid-gap: 30px;
+          justify-items: center;
         }
       `}</style>
     </Layout>
   )
-}
+)
 
-export default Projects
+export default Projects;

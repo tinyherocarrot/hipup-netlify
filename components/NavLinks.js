@@ -42,14 +42,15 @@ const NavLinks = () => {
 
         a {
           color: black;
-          text-decoration: none;
-          font-family: "Arial";
+          padding: 0.6rem;
           margin-right: 2rem;
           pointer: cursor;
-        }
+          border-bottom: 2px solid transparent;
+          transition: border-bottom 0.5s;
+        } 
 
         a:hover {
-          opacity: 0.6;
+          border-bottom: 2px solid black;
         }
       `}</style>
     </div>
@@ -94,10 +95,19 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
           .menu-close {
             border: none;
             background-color: transparent;
+            cursor: pointer;
             float: right
           }
+          .menu-close:hover {
+            opacity: 0.6;
+          }
           .mobile-nav {
-            display: ${menuOpen ? "inline" : "none"};
+            display: ${menuOpen ? "flex" : "none"};
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            text-align: center;
             position: absolute;
             top: 0;
             left: 0;
@@ -105,6 +115,8 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
             color: white;
             height: 100vh;
             width: 100vw;
+            z-index: 9000;
+            font-size: 1.5rem;
           }
           .mobile-navlinks {
             display: flex;

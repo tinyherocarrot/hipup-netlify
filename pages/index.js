@@ -19,81 +19,81 @@ function getProjects() {
 
 export default function Homepage() {
   return (
-    <>
+    <Layout>
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css?family=Arapey|Noto+Sans+TC:300,500"
-          rel="stylesheet"
-        />
+        <title>
+          HIPUP
+        </title>
       </Head>
-      <Layout>
-        <section className="homepage-hero">
-          <div className="homepage-hero-overlay">
-            <h1>Health Intervention Projects for Underserved Populations</h1>
-            <Link href={`/allProjects`}>
-              <Button>Check out our work</Button>
-            </Link>
-          </div>
-          <img
-            className="homepage-hero-img"
-            src="https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image"
-            alt=""
-          />
-        </section>
-        <h1>What we do</h1>
-        <section className="centered-margined">
-          <p>
-            This is where the mission statement will go. Lorem ipsum dolor amet
-            waistcoat small batch brunch, jianbing master cleanse air plant
-            bitters art party meditation photo booth palo santo selfies.
-          </p>
-        </section>
-        <h1>Get Involved</h1>
-        <section className="cards">
-          {getProjects().map((project, i) => (
-            <ProjectLink key={project.id} project={project} />
-          ))}
-        </section>
-        <section>
-          <img
-            className=""
-            src="https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic"
-            alt="hipup-group-photo"
-          />
-        </section>
-      </Layout>
+      <section className="homepage-hero">
+        <div className="homepage-hero-overlay">
+          <h1>Health Intervention Projects for Underserved Populations</h1>
+          <Link href={`/allProjects`}>
+            <Button>Check out our work</Button>
+          </Link>
+        </div>
+        <img
+          className="homepage-hero-img"
+          src="https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image"
+          alt=""
+        />
+      </section>
+      <h1>What we do</h1>
+      <section className="centered-margined">
+        <p>
+          This is where the mission statement will go. Lorem ipsum dolor amet
+          waistcoat small batch brunch, jianbing master cleanse air plant
+          bitters art party meditation photo booth palo santo selfies.
+        </p>
+      </section>
+      <h1>Get Involved</h1>
+      <section className="cards">
+        {getProjects().map((project, i) => (
+          <ProjectLink key={project.id} project={project} />
+        ))}
+      </section>
+      <section>
+        <img
+          className=""
+          src="https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic"
+          alt="hipup-group-photo"
+        />
+      </section>
 
-      <style jsx>{`
-        .homepage-hero {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .homepage-hero-img {
-          width: 100vw;
-          height: auto;
-        }
-        .homepage-hero-overlay {
-          position: absolute;
-          text-align: center;
-        }
-        .cards {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 10px;
-          max-width: 960px;
-          margin: 0 auto;
-        }
-        .card {
-          flex: 0 0 calc(16.66% - 20px);
-        }
-
-        h1 {
-        }
+    <style jsx>{`
+      img {
+        max-width: 100%
+      }
+      .homepage-hero {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .homepage-hero-img {
+        width: 100vw;
+        height: auto;
+      }
+      .homepage-hero-overlay {
+        position: absolute;
+        text-align: center;
+      }
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .card {
+        flex: 0 0 calc(16.66% - 20px);
+      }
+      
+      h1 {
+      }
       `}</style>
-    </>
+    </Layout>
   )
 }
 

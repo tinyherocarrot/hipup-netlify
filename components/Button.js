@@ -7,7 +7,6 @@ const Button = ({ children, ...otherProps }) => {
       <style jsx>{`
         button {
           padding 0.6rem;
-          border-radius: 0.5rem;
           background-color: white;
           border: 2px solid black;
         }

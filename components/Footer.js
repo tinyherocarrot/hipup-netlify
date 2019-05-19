@@ -18,7 +18,7 @@ const Footer = () => {
             background-color: grey;
             position: absolute;
             bottom: 0;
-            padding: 1rem;
+            padding: 2rem;
             height: auto;
             width: 100%;
             display: flex;
@@ -45,7 +45,7 @@ const Footer = () => {
         body {
           position: relative;
           margin: 0;
-          padding-bottom: 8rem;
+          padding-bottom: 12rem;
           min-height: 100%;
         }
         

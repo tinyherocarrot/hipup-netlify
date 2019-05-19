@@ -1,4 +1,6 @@
 import { withRouter } from "next/router"
+import Head from "next/head"
+
 import Layout from "../components/Layout.js"
 import ContactForm from "../components/ContactForm.js"
 
@@ -6,6 +8,11 @@ import ContactForm from "../components/ContactForm.js"
 
 const Content = withRouter(({ router: { query: { title } } }) => (
   <>
+    <Head>
+      <title>
+        HIPUP | {title}
+      </title>
+    </Head>
     <section>
       <img
         className="project-hero"

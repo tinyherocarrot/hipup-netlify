@@ -11,7 +11,7 @@ module.exports = {
     exportPathMap: async (defaultPathMap) => {
         return {
             '/': { page: '/' },
-            '/projects': { page: '/allProjects' },
+            '/projects': { page: '/allProjects', query: { title: 'Projects' } },
             '/p/hello-nextjs': { page: '/project', query: { title: 'Hello Next.js' } },
             '/p/learn-nextjs': { page: '/project', query: { title: 'Learn Next.js is awesome' } },
             '/p/deploy-nextjs': { page: '/project', query: { title: 'Deploy apps with Zeit' } },

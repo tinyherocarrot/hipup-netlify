@@ -1,9 +1,18 @@
 import React from "react"
+import Head from "next/head"
+
 import Header from "./Header"
 import Footer from "./Footer"
 
 const Layout = ({ children }) => (
   <div>
+    <Head>
+        <title>JEEYY</title>
+        <link
+          href="https://fonts.googleapis.com/css?family=Arapey|Noto+Sans+TC:300,500"
+          rel="stylesheet"
+        />
+      </Head>
     <Header />
     <div className="content">{children}</div>
     <Footer />
@@ -32,12 +41,13 @@ const Layout = ({ children }) => (
       }
       .centered-margined {
         max-width: 800px;
-        text-align: center;
         margin: 0 auto;
       }
-
+      a {
+        text-decoration: none;
+      }
       section {
-        margin: 0 auto 3rem;
+        margin: 0 auto 6rem;
       }
 
       @media only screen and (max-width: 768px) {

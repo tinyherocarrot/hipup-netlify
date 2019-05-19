@@ -1,7 +1,10 @@
 import React from "react"
+import Head from "next/head"
+import { withRouter } from "next/router"
+
 import Layout from "../components/Layout"
 
-const Publications = () => {
+const Publications = withRouter(({ router: { query: { title } } }) => {
   return (
     <Layout>
       <div className="publications-container">
@@ -80,6 +83,6 @@ const Publications = () => {
       `}</style>
     </Layout>
   )
-}
+})
 
 export default Publications

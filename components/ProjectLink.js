@@ -6,29 +6,33 @@ const ProjectLink = ({ project }) => (
     <Link as={`/p/${project.id}`} href={`/project?title=${project.title}`}>
       <div className="project-card">
         <a>{project.title} →</a>
-        <img
-          className="article-img"
-          src="https://placekitten.com/305/205"
-          alt=" "
-        />
+        <div className="project-img"></div>
+
       </div>
     </Link>
     <style jsx>{`
-      a,
-      img {
-        cursor: pointer;
-      }
       a {
-        text-decoration: none;
-        color: blue;
-        font-family: "Arial";
+        color: black;
+        margin-bottom: 1rem;
       }
       a:hover {
         text-decoration: underline;
       }
       .project-card {
         display: flex;
-        flex-direction column
+        flex-direction: column;
+        justify-content: space-around;
+        max-height: 300px;
+        width: auto;
+        cursor: pointer;
+      }
+      .project-card:hover {
+        background-color: lightgrey
+      }
+      .project-img {
+        background: url("https://placekitten.com/305/205") no-repeat left top;
+        height: 300px;
+        width: 300px;
       }
     `}</style>
   </>
