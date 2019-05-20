@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 
 const navLinks = [
-  { name: "Projects", path: "/allProjects" },
-  { name: "Publications", path: "/publications" }
+  { name: "Projects", maskedPath: "/projects" },
+  { name: "Publications", maskedPath: "/publications" }
 ]
 
 const NavLinks = () => {
@@ -24,7 +24,7 @@ const NavLinks = () => {
       {width > 768 ? (
         <>
           {navLinks.map(link => (
-            <Link href={link.path} key={link.name}>
+            <Link as={link.maskedPath} href={`${link.path}?title=${link.name}`} key={link.name}>
               <a>{link.name}</a>
             </Link>
           ))}

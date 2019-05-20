@@ -9,9 +9,7 @@ import ContactForm from "../components/ContactForm.js"
 const Content = withRouter(({ router: { query: { title } } }) => (
   <>
     <Head>
-      <title>
-        HIPUP | {title}
-      </title>
+      <title>HIPUP | {title}</title>
     </Head>
     <section>
       <img
@@ -28,12 +26,16 @@ const Content = withRouter(({ router: { query: { title } } }) => (
         meditation photo booth palo santo selfies. Forage raw denim roof party
         DIY crucifix literally seitan celiac kogi slow-carb knausgaard taiyaki.
       </p>
+    </section>
+    <section className="centered-margined">
       <h2>Eligibility</h2>
       <ul>
         <li>16 years of age</li>
         <li>Currently enrolled in high school</li>
         <li>Asian / Pacific Islander</li>
       </ul>
+    </section>
+    <section className="centered-margined">
       <h2>The Team</h2>
       <div className="team-grid">
         <div className="profile-card">
@@ -76,6 +78,8 @@ const Content = withRouter(({ router: { query: { title } } }) => (
           </p>
         </div>
       </div>
+    </section>
+    <section className="centered-margined">
       <h2>Want to Learn More?</h2>
       <ContactForm />
     </section>
@@ -83,6 +87,17 @@ const Content = withRouter(({ router: { query: { title } } }) => (
     <style jsx>{`
       h2 {
         text-align: left;
+      }
+      p, li {
+        font-weight: lighter
+      }
+      li {
+        list-style: none;
+        padding-top: 0.3rem;
+        padding-left: 1.3rem;
+        border-left: 1px solid black;
+      }
+      ul {
       }
       .project-hero {
         left: 0;
@@ -93,13 +108,14 @@ const Content = withRouter(({ router: { query: { title } } }) => (
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
+        gap: 30px;
         max-width: 960px;
         margin: 0 auto;
       }
       .profile-card {
         display: flex;
         flex-direction: column;
+        text-align: center
       }
       .profile-pic {
         border-radius: 50%;

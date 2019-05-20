@@ -7,6 +7,11 @@ import Layout from "../components/Layout"
 const Publications = withRouter(({ router: { query: { title } } }) => {
   return (
     <Layout>
+      <Head>
+          <title>
+            HIPUP | {title}
+          </title>
+        </Head>
       <div className="publications-container">
         <aside className="categories">
           <p>

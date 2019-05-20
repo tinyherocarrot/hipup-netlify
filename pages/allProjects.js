@@ -40,7 +40,8 @@ const Projects = withRouter(({ router: { query: { title } } }) => (
           cursor: pointer;
         }
         .project-filters {
-          font-size: 2rem;
+          font-size: 1rem;
+          font-weight: lighter;
           text-align: center;
           margin: 2rem auto;
         }

@@ -16,6 +16,7 @@ collections:
       fields:
         - { label: "Title", name: "title", widget: "string"}
         - { label: "Mission", name: "mission", widget: "text" }
+        - { label: "Group Photo", name: "group_photo", widget: "text" }
     - label: "Contact"
       name: "contact"
       file: "content/_pages/contact.md"
@@ -33,12 +34,11 @@ collections:
     label_singular: "Project"
     name: "projects"
     folder: "content/_projects"
-    filter: { field: "current", value: true }
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string", tagname: "h1" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Current", name: "current", widget: "boolean" }
+      - { label: "Current", name: "is_current", widget: "boolean" }
       - { label: "Project Logo", name: "logo", widget: "image" }
       - { label: "Project Image", name: "cover image", widget: "image" }
       - label: "Eligibilty"
@@ -59,6 +59,21 @@ collections:
             displayFields: ["title", "project"] 
             searchFields: ["title", "project"]
             valueField:  "title"
+  - label: "Publications"
+    label_singular: "Category"
+    name: "publications"
+    folder: "content/_publications"
+    create: true
+    fields:
+      - { label: "Category", name: "title", widget: string }
+      - label: "Publications"
+        name: "publications"
+        widget: list
+        fields:
+          - { label: "Title", name: "title", widget: string }
+          - { label: "Date Published", name: "date_published", widget: date }
+          - { label: "Description", name: "publication_description", widget: text }
+          - { label: "File Upload", name: "publication_file", widget: file }
   - label: "Team Members"
     label_singular: " Team Member"
     name: "team"
@@ -66,18 +81,17 @@ collections:
     widget: "object"
     create: true
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Project", name: "project", widget: "string" }
+      - { label: "Name", name: "title", widget: "string" }
       - { label: "Photo", name: "photo", widget: "image", default: "/static/img/avatar.png" }
       - { label: "Bio", name: "bio", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - label: "Project(s)"
+        name: "projects"
+        widget: "relation"
+        collection: "projects"
+        multiple: true
+        displayFields: ["title", "project"] 
+        searchFields: ["title", "project"]
+        valueField:  "title"
       - { label: "Public", name: "public", widget: "boolean", default: true }
-  - label: "Publications"
-    label_singular: "Publication"
-    name: "publications"
-    folder: "content/_publications"
-    create: true
-    widget: list
-    fields:
-      - { label: "Title", name: "title", widget: string }
-      - { label: "Date Published", name: "date_published", widget: date }
-      - { label: "Description", name: "description", widget: text }
+  

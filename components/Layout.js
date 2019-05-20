@@ -7,7 +7,6 @@ import Footer from "./Footer"
 const Layout = ({ children }) => (
   <div>
     <Head>
-        <title>JEEYY</title>
         <link
           href="https://fonts.googleapis.com/css?family=Arapey|Noto+Sans+TC:300,500"
           rel="stylesheet"
@@ -41,7 +40,7 @@ const Layout = ({ children }) => (
       }
       .centered-margined {
         max-width: 800px;
-        margin: 0 auto;
+        margin: 0 auto 6rem;
       }
       a {
         text-decoration: none;
