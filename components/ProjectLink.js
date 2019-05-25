@@ -5,8 +5,9 @@ const ProjectLink = ({ project }) => (
   <>
     <Link as={`/p/${project.id}`} href={`/project?title=${project.title}`}>
       <div className="project-card">
-        <a>{project.title} →</a>
-        <div className="project-img"></div>
+        <div className="project-img" />
+        <h2>{project.title.toUpperCase()}</h2>
+        <p>A project tagline</p>
 
       </div>
     </Link>
@@ -18,12 +19,14 @@ const ProjectLink = ({ project }) => (
       a:hover {
         text-decoration: underline;
       }
+      p {
+        font-weight: lighter
+      }
       .project-card {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        max-height: 300px;
-        width: auto;
+        flex: 1
         cursor: pointer;
       }
       .project-card:hover {

@@ -41,6 +41,7 @@ const Layout = ({ children }) => (
       .centered-margined {
         max-width: 800px;
         margin: 0 auto 6rem;
+        padding 0 2rem;
       }
       a {
         text-decoration: none;

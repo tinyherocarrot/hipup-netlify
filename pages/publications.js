@@ -1,17 +1,31 @@
 import React from "react"
 import Head from "next/head"
 import { withRouter } from "next/router"
+import allEntries from "../content/_publications/*.md"
+// import dynamic from "next/dynamic"
+// import glob from "glob"
 
+// const allEntries = glob.sync("**/content/_publications/*.md"); 
+console.log('all entries', allEntries)
+
+// import requireContext from "require-context"
+// const allEntries = require.context("../content/_publications", true, /\.md$/)
+// console.log(allEntries.keys()) // all the files found in the context
+// allEntries.keys().forEach(allEntries) // require them all
+// function importAll (r) {
+//   r.keys().forEach(r);
+// }
+
+// importAll(require.context('../static/img', true, /\.pdf$/));
 import Layout from "../components/Layout"
 
-const Publications = withRouter(({ router: { query: { title } } }) => {
+const Publications = withRouter(({ router: { query: { title } }, ...props }) => {
+  console.log(props)
   return (
     <Layout>
       <Head>
-          <title>
-            HIPUP | {title}
-          </title>
-        </Head>
+        <title>HIPUP | {title}</title>
+      </Head>
       <div className="publications-container">
         <aside className="categories">
           <p>
@@ -28,7 +42,8 @@ const Publications = withRouter(({ router: { query: { title } } }) => {
           </p>
         </aside>
         <div className="publications">
-          <article>
+          {/* {this.props} */}
+          {/* <article>
             <h2>Publication No.1</h2>
             <p>Mariko Iwamoto, Tooru Nemoto</p>
             <p>19 May, 2017</p>
@@ -57,7 +72,7 @@ const Publications = withRouter(({ router: { query: { title } } }) => {
             <h2>Publication No.1</h2>
             <p>Mariko Iwamoto, Tooru Nemoto</p>
             <p>19 May, 2017</p>
-          </article>
+          </article> */}
         </div>
       </div>
 
@@ -89,5 +104,11 @@ const Publications = withRouter(({ router: { query: { title } } }) => {
     </Layout>
   )
 })
+
+Publications.getInitialProps = async () => {
+  // const r = require.context("../content/_publications", true, /\.md$/)
+  // const content = allEntries.map(e => require(e));
+return  {}
+}
 
 export default Publications

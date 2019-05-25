@@ -1,4 +1,4 @@
-// TODO: dynamically generate
+// TODO: dynamically generate pathMap. How???
 
 module.exports = {
     webpack: (cfg) => {
@@ -6,8 +6,13 @@ module.exports = {
             {
                 test: /\.md$/,
                 use: 'frontmatter-markdown-loader'
-            }
+            },
+            {
+                test: /\.js/,
+                loader: 'import-glob'
+            },
         )
+        cfg.node = {fs: 'empty'}
         return cfg;
     },
     exportPathMap: async (defaultPathMap) => {

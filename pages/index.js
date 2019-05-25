@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Link from "next/link"
 import Head from "next/head"
+require('require-context/register')
 
 import Layout from "../components/Layout"
 import Button from "../components/Button"
@@ -82,12 +83,12 @@ export default function Homepage() {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 10px;
-        max-width: 960px;
+        gap: 30px;
+        max-width: 100%;
         margin: 0 auto;
       }
       .card {
-        flex: 0 0 calc(16.66% - 20px);
+        flex: 1;
       }
       
       h1 {

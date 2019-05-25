@@ -37,13 +37,12 @@ const NavLinks = () => {
       )}
 
       <style jsx>{`
-        .nav-links {
-        }
+
 
         a {
           color: black;
           padding: 0.6rem;
-          margin-right: 2rem;
+          margin-left: 2rem;
           pointer: cursor;
           border-bottom: 2px solid transparent;
           transition: border-bottom 0.5s;
