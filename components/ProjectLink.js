@@ -6,7 +6,7 @@ const ProjectLink = ({ project }) => (
     <Link as={`/p/${project.id}`} href={`/project?title=${project.title}`}>
       <div className="project-card">
         <div className="project-img" />
-        <h2>{project.title.toUpperCase()}</h2>
+        <h2>{project.title}</h2>
         <p>A project tagline</p>
 
       </div>

@@ -46,11 +46,12 @@ collections:
         name: "requirements"
         widget: "list"
         fields:
-          - { label: "Requirement", name: "requirement", widget: "text" }
+          - { label: "Requirement", name: "requirement", widget: "string" }
       - label: "Team Members"
         name: "team_members"
         label_singular: "member"
         widget: "list"
+        required: false
         fields:
           - label: "Member"
             name: "title"
@@ -83,7 +84,7 @@ collections:
     fields:
       - { label: "Name", name: "title", widget: "string" }
       - { label: "Photo", name: "photo", widget: "image", default: "/static/img/avatar.png" }
-      - { label: "Bio", name: "bio", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "text" }
       - { label: "Role", name: "role", widget: "string" }
       - label: "Project(s)"
         name: "projects"

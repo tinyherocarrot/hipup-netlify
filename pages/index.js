@@ -54,7 +54,7 @@ export default function Homepage() {
       </section>
       <section>
         <img
-          className=""
+          className="centered-margined"
           src="https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic"
           alt="hipup-group-photo"
         />

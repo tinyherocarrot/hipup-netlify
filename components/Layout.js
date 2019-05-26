@@ -7,11 +7,11 @@ import Footer from "./Footer"
 const Layout = ({ children }) => (
   <div>
     <Head>
-        <link
-          href="https://fonts.googleapis.com/css?family=Arapey|Noto+Sans+TC:300,500"
-          rel="stylesheet"
-        />
-      </Head>
+      <link
+        href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,500|Playfair+Display:700&display=swap"
+        rel="stylesheet"
+      />
+    </Head>
     <Header />
     <div className="content">{children}</div>
     <Footer />
@@ -35,8 +35,8 @@ const Layout = ({ children }) => (
       h1 {
         text-align: center;
       }
-      h2 {
-        font-family: "Arapey", serif;
+      h2, h3 {
+        font-family: 'Playfair Display', serif;
       }
       .centered-margined {
         max-width: 800px;
