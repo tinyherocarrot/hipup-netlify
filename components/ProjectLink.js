@@ -34,7 +34,7 @@ const ProjectLink = ({ project }) => (
       }
       .project-img {
         background: url("https://placekitten.com/305/205") no-repeat left top;
-        height: 300px;
+        height: 150px;
         width: 300px;
       }
     `}</style>

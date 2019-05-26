@@ -70,7 +70,7 @@ collections:
         name: "publications"
         widget: list
         fields:
-          - { label: "Title", name: "title", widget: string }
+          - { label: "Title", name: "publication_title", widget: string }
           - { label: "Date Published", name: "date_published", widget: date }
           - { label: "Description", name: "publication_description", widget: text }
           - { label: "File Upload", name: "publication_file", widget: file }

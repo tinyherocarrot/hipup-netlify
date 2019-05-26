@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import Link from "next/link"
 import Head from "next/head"
-require('require-context/register')
 
 import Layout from "../components/Layout"
 import Button from "../components/Button"
