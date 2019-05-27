@@ -5,19 +5,21 @@ import Head from "next/head"
 import Layout from "../components/Layout"
 import Button from "../components/Button"
 import ProjectLink from "../components/ProjectLink"
-// import content from '../content/_pages/home.md';
+import content from '../content/_pages/home.md';
 
-function getProjects() {
-  return [
-    { id: "hello-nextjs", title: "Hello Next.js" },
-    { id: "learn-nextjs", title: "Learn Next.js is awesome" },
-    { id: "deploy-nextjs", title: "Deploy apps with ZEIT" },
-    { id: "deploy-nextjs", title: "Deploy apps with ZEIT" },
-    { id: "deploy-nextjs", title: "Deploy apps with ZEIT" }
-  ]
-}
+// function getProjects() {
+//   return [
+//     { id: "hello-nextjs", title: "Hello Next.js" },
+//     { id: "learn-nextjs", title: "Learn Next.js is awesome" },
+//     { id: "deploy-nextjs", title: "Deploy apps with ZEIT" },
+//     { id: "deploy-nextjs", title: "Deploy apps with ZEIT" },
+//     { id: "deploy-nextjs", title: "Deploy apps with ZEIT" }
+//   ]
+// }
 
-export default function Homepage() {
+const Homepage = ({ projects }) => {
+  content = content.attributes
+  console.log(content)
   return (
     <Layout>
       <Head>
@@ -28,7 +30,7 @@ export default function Homepage() {
       <section className="homepage-hero">
         <div className="homepage-hero-overlay">
           <h1>Health Intervention Projects for Underserved Populations</h1>
-          <Link href={`/allProjects`}>
+          <Link href={`/projects`}>
             <Button>Check out our work</Button>
           </Link>
         </div>
@@ -41,15 +43,13 @@ export default function Homepage() {
       <h1>What we do</h1>
       <section className="centered-margined">
         <p>
-          This is where the mission statement will go. Lorem ipsum dolor amet
-          waistcoat small batch brunch, jianbing master cleanse air plant
-          bitters art party meditation photo booth palo santo selfies.
+          {content.mission}
         </p>
       </section>
       <h1>Get Involved</h1>
       <section className="cards">
-        {getProjects().map((project, i) => (
-          <ProjectLink key={project.id} project={project} />
+        {projects.map(({attributes}, i) => (
+          <ProjectLink key={i} project={attributes} />
         ))}
       </section>
       <section>
@@ -97,24 +97,4 @@ export default function Homepage() {
   )
 }
 
-// export default class Index extends Component {
-//   render() {
-//     let { html , attributes:{ title, cats } } = content;
-//     return (
-//       <article>
-//           <h1>{title}</h1>
-//           <div dangerouslySetInnerHTML={{ __html: html }}/>
-//           <ul>
-//               { cats.map((cat, k) => (
-//                   <li key={k}>
-//                     <h2>{cat.name}</h2>
-//                     <p>{cat.description}</p>
-//                   </li>
-//               ))}
-//           </ul>
-//       </article>
-//     )
-//   }
-// }
-
-// export default Index
+export default Homepage

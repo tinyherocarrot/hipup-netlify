@@ -1,38 +1,35 @@
-import React from "react"
+import React, { useState } from "react"
 import Head from "next/head"
 import { withRouter } from "next/router"
 
 import Layout from "../components/Layout"
 import ProjectLink from "../components/ProjectLink"
+import allProjects from "../content/_projects/*.md"
+console.log(allProjects)
 
-function getProjects() {
-  return [
-    { id: "hello-nextjs", title: "Hello Next.js" },
-    { id: "learn-nextjs", title: "Learn Next.js is awesome" },
-    { id: "deploy-nextjs", title: "Deploy apps with ZEIT" },
-    { id: "deploy-nextjs", title: "Deploy apps with ZEIT" },
-    { id: "deploy-nextjs", title: "Deploy apps with ZEIT" }
-  ]
-}
+const Projects = withRouter(({ router: { query: { title } } }) => {
+  const [filter, toggleFilter] = useState("Current")
 
-const Projects = withRouter(({ router: { query: { title } } }) => (
+  return (
     <Layout>
       <Head>
-        <title>
-          HIPUP | {title}
-        </title>
+        <title>HIPUP | {title}</title>
       </Head>
 
       <div className="project-filters">
-        <a>Current</a>
+        <a onClick={() => toggleFilter("Current")}>Current</a>
         {"  |  "}
-        <a>Past</a>
+        <a onClick={() => toggleFilter("Past")}>Past</a>
       </div>
 
       <div className="project-grid centered-margined">
-        {getProjects().map((project, i) => (
-          <ProjectLink key={project.id} project={project} />
-        ))}
+        {allProjects
+          .filter(({ attributes: { is_current } }) =>
+            filter === "Current" ? is_current : !is_current
+          )
+          .map(({ attributes }, i) => (
+            <ProjectLink key={i} project={attributes} />
+          ))}
       </div>
 
       <style jsx>{`
@@ -54,6 +51,6 @@ const Projects = withRouter(({ router: { query: { title } } }) => (
       `}</style>
     </Layout>
   )
-)
+})
 
-export default Projects;
+export default Projects

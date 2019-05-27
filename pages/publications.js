@@ -4,7 +4,7 @@ import { withRouter } from "next/router"
 
 import Layout from "../components/Layout"
 import allEntries from "../content/_publications/*.md"
-console.log("all entries", allEntries)
+// console.log("all entries", allEntries)
 
 const Publications = withRouter(
   ({
@@ -14,19 +14,7 @@ const Publications = withRouter(
     ...props
   }) => {
     const [currentCategory, changeCategory] = useState("")
-
-    console.log(
-      "- - - - - - - - - - -",
-      allEntries
-        .filter(category =>
-          currentCategory ? category === currentCategory : true
-        )
-        .reduce((a, c) => {
-          const publications = c.attributes.publications.map(p => p.title)
-          return [...a, ...publications]
-        }, [])
-    )
-
+    
     return (
       <Layout>
         <Head>
@@ -86,9 +74,5 @@ const Publications = withRouter(
     )
   }
 )
-
-Publications.getInitialProps = async () => {
-  return {}
-}
 
 export default Publications
