@@ -6,8 +6,8 @@ import Layout from "../components/Layout.js"
 import ContactForm from "../components/ContactForm.js"
 
 const ProjectView = withRouter(({ projects, router: { query: { title } } }) => {
+  console.log(projects[0])
   const project = projects.find(p => p.attributes.title == title).attributes
-  console.log(project)
   return (
     <Layout>
       <Head>
@@ -38,8 +38,8 @@ const ProjectView = withRouter(({ projects, router: { query: { title } } }) => {
       <section className="centered-margined">
         <h2>The Team</h2>
         <div className="team-grid">
-          {project.team_members.map(p => (
-            <div className="profile-card">
+          {project.team_members.map((p, i) => (
+            <div key={i} className="profile-card">
               <img
                 className="profile-pic"
                 src="https://via.placeholder.com/150.png?text=Cover+Image"

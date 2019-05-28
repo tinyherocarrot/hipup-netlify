@@ -9,6 +9,7 @@ import content from "../content/_pages/home.md"
 
 const Homepage = ({ projects }) => {
   const homeContent = content.attributes
+  console.log('guffaw', homeContent)
   return (
     <Layout>
       <Head>
