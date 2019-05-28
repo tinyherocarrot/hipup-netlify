@@ -56,7 +56,9 @@ const Layout = ({ children }) => (
         }
       }
 
-      
+      .font-light {
+        font-weight: lighter;
+      }
     `}</style>
   </div>
 )
