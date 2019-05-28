@@ -7,6 +7,7 @@ import ContactForm from "../components/ContactForm.js"
 import { withPageRouter } from "../util/withPageRouter.js"
 
 const ProjectView = withPageRouter(({ projects, router: { query: { title } } }) => {
+// const ProjectView = ({ projects }) => {
   console.log("project js 9 DO THESE EQUAL??", projects[0].attributes.title, title, projects[0].attributes.title === title)
   const project = projects.find(p => p.attributes.title == title).attributes
   return (

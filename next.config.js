@@ -1,4 +1,4 @@
-// TODO: dynamically generate pathMap. How???
+// TODO: dynamically generate pathMap
 
 module.exports = {
     webpack: (cfg) => {
@@ -16,13 +16,20 @@ module.exports = {
         return cfg;
     },
     // exportPathMap: async (defaultPathMap) => {
+		// 		const allProjects = await require("./content/_projects/*.md")
+		// 		const projectPaths = allProjects.reduce((acc, curr) => {
+		// 				const { title } = curr.attributes
+		// 				const slug = title.replace(/\s+/g, '-').toLowerCase();
+		// 				const path = {
+		// 						[`project/${slug}`]: `{ page: '/project', query: { title: '${title}' } }`
+		// 				}
+		// 				return { ...acc, ...path }
+		// 		}, {})
     //     return {
     //         '/': { page: '/' },
     //         '/projects': { page: '/allProjects', query: { title: 'Projects' } },
     //         '/publications': { page: '/publications', query: { title: 'Publications' }  },
-    //         '/p/hello-nextjs': { page: '/project', query: { title: 'Hello Next.js' } },
-    //         '/p/learn-nextjs': { page: '/project', query: { title: 'Learn Next.js is awesome' } },
-    //         '/p/deploy-nextjs': { page: '/project', query: { title: 'Deploy apps with Zeit' } },
+    //         ...projectPaths
     //     }
     // }
 }

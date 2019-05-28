@@ -1015,6 +1015,7 @@ var _jsxFileName = "/Users/tinyherocarrot/projects/hipup-netlify/pages/_app.js";
 
 
 var allProjects = [_content_projects_iway_md__WEBPACK_IMPORTED_MODULE_12__];
+console.log(allProjects);
 
 var MyApp =
 /*#__PURE__*/
@@ -1051,14 +1052,14 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_11__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 27
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_10___default.a.createElement(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
         projects: projects,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 28
         },
         __self: this
       })));

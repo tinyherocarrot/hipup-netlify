@@ -2,6 +2,7 @@ import React from "react"
 import App, { Container } from "next/app"
 
 import allProjects from "../content/_projects/*.md"
+console.log(allProjects)
 
 class MyApp extends App {
   state = {
