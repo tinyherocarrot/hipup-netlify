@@ -20,7 +20,7 @@ export const withPageRouter = (Component) => {
 
         // replace the empty query
         router.query = query;
-
+        console.log("HOLY ROUTER:::::: ", router)
         return (<Component {...props} router={router} />);
     });
 };
