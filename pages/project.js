@@ -1,11 +1,12 @@
-import { withRouter } from "next/router"
+// import { withRouter } from "next/router"
 import Head from "next/head"
 import dynamic from "next/dynamic"
 
 import Layout from "../components/Layout.js"
 import ContactForm from "../components/ContactForm.js"
+import { withPageRouter } from "../util/withPageRouter.js"
 
-const ProjectView = withRouter(({ projects, router: { query: { title } } }) => {
+const ProjectView = withPageRouter(({ projects, router: { query: { title } } }) => {
   console.log("project js 9 DO THESE EQUAL??", projects[0].attributes.title, title, projects[0].attributes.title === title)
   const project = projects.find(p => p.attributes.title == title).attributes
   return (
