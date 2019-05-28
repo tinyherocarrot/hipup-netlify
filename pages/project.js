@@ -6,7 +6,7 @@ import Layout from "../components/Layout.js"
 import ContactForm from "../components/ContactForm.js"
 
 const ProjectView = withRouter(({ projects, router: { query: { title } } }) => {
-  console.log(projects[0])
+  console.log("project js 9", projects[0])
   const project = projects.find(p => p.attributes.title == title).attributes
   return (
     <Layout>
