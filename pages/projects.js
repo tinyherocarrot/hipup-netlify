@@ -7,7 +7,7 @@ import { getProjects } from "../api/get-projects.js"
 
 const Projects = ({ allProjects }) => {
   const [filter, toggleFilter] = useState("Current")
-   
+
   return (
     <>
       <Head>
@@ -22,11 +22,11 @@ const Projects = ({ allProjects }) => {
 
       <div className="project-grid centered-margined">
         {allProjects
-          .filter(({ current }) =>
+          .filter(({ fields: { current } }) =>
             filter === "Current" ? current : !current
           )
-          .map((project, i) => (
-            <ProjectLink key={i} project={project} />
+          .map(({ fields: { projectName }, sys: { id } }) => (
+            <ProjectLink key={id} projectName={projectName} entryId={id} />
           ))}
       </div>
 
@@ -52,9 +52,8 @@ const Projects = ({ allProjects }) => {
 }
 
 Projects.getInitialProps = async () => {
-  const res = await getProjects();
-  const allProjects = res.map(p => p.fields)
-  return { allProjects };
-};
+  const allProjects = await getProjects()
+  return { allProjects }
+}
 
 export default Projects
