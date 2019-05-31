@@ -14,4 +14,4 @@ options.accessToken = process.env.CTF_CDA_TOKEN // This is the production token
 
 const client = contentful.createClient(options)
 
-export default client
+module.exports = client
