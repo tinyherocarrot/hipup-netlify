@@ -10,10 +10,6 @@ module.exports = {
         test: /\.md$/,
         use: "frontmatter-markdown-loader"
       },
-      {
-        test: /\.js/,
-        loader: "import-glob"
-      }
     )
     cfg.plugins.push(new webpack.EnvironmentPlugin(localEnv))
     cfg.node = { fs: "empty" }
