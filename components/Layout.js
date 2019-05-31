@@ -11,6 +11,7 @@ const Layout = ({ children }) => (
         href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,500|Playfair+Display:700&display=swap"
         rel="stylesheet"
       />
+      <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
     </Head>
     <Header />
     <div className="content">{children}</div>

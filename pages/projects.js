@@ -1,19 +1,17 @@
 import React, { useState } from "react"
 import Head from "next/head"
-import { withRouter } from "next/router"
 
-import Layout from "../components/Layout"
 import ProjectLink from "../components/ProjectLink"
-import allProjects from "../content/_projects/*.md"
-console.log(allProjects)
 
-const Projects = withRouter(({ router: { query: { title } } }) => {
+import { getProjects } from "../api/get-projects.js"
+
+const Projects = ({ allProjects }) => {
   const [filter, toggleFilter] = useState("Current")
-
+   
   return (
-    <Layout>
+    <>
       <Head>
-        <title>HIPUP | {title}</title>
+        <title>HIPUP | Projects</title>
       </Head>
 
       <div className="project-filters">
@@ -24,11 +22,11 @@ const Projects = withRouter(({ router: { query: { title } } }) => {
 
       <div className="project-grid centered-margined">
         {allProjects
-          .filter(({ attributes: { is_current } }) =>
-            filter === "Current" ? is_current : !is_current
+          .filter(({ current }) =>
+            filter === "Current" ? current : !current
           )
-          .map(({ attributes }, i) => (
-            <ProjectLink key={i} project={attributes} />
+          .map((project, i) => (
+            <ProjectLink key={i} project={project} />
           ))}
       </div>
 
@@ -49,8 +47,14 @@ const Projects = withRouter(({ router: { query: { title } } }) => {
           justify-items: center;
         }
       `}</style>
-    </Layout>
+    </>
   )
-})
+}
+
+Projects.getInitialProps = async () => {
+  const res = await getProjects();
+  const allProjects = res.map(p => p.fields)
+  return { allProjects };
+};
 
 export default Projects

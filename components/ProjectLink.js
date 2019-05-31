@@ -1,16 +1,16 @@
 import React from "react"
 import Link from "next/link"
 
-const ProjectLink = ({ project }) => (
+const ProjectLink = ({ projectName, entryId }) => (
   <>
-    <Link href={`/project?title=${project.title}`}>
+    <Link href={`/project?id=${entryId}`} as={`project/${projectName}`}>
       <div className="project-card">
         <div className="project-img" />
-        <h2>{project.title}</h2>
+        <h2>{projectName}</h2>
         <p>A project tagline</p>
-
       </div>
     </Link>
+
     <style jsx>{`
       a {
         color: black;

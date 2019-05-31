@@ -2,15 +2,16 @@ import React, { Component } from "react"
 import Link from "next/link"
 import Head from "next/head"
 
-import Layout from "../components/Layout"
 import Button from "../components/Button"
 import ProjectLink from "../components/ProjectLink"
-import content from "../content/_pages/home.md"
 
-const Homepage = ({ projects }) => {
-  const homeContent = content.attributes
+import { getAllEntries, getProjects } from "../api/get-projects.js"
+import { getHomepage } from "../api/get-homepage.js"
+
+const Homepage = ({ allProjects, homeContent }) => {
+  console.log(allProjects)
   return (
-    <Layout>
+    <>
       <Head>
         <title>HIPUP</title>
       </Head>
@@ -27,14 +28,14 @@ const Homepage = ({ projects }) => {
           alt=""
         />
       </section>
-      <h1>What we do</h1>
+      <h1>What We Do</h1>
       <section className="centered-margined font-light">
-        <p>{homeContent.mission}</p>
+        <p>{homeContent.missionStatement}</p>
       </section>
       <h1>Get Involved</h1>
       <section className="cards">
-        {projects.map(({ attributes }, i) => (
-          <ProjectLink key={i} project={attributes} />
+        {allProjects.map(({fields: { projectName }, sys: { id }}) => (
+          <ProjectLink key={id} projectName={projectName} entryId={id}/>
         ))}
       </section>
       <section>
@@ -78,8 +79,18 @@ const Homepage = ({ projects }) => {
         h1 {
         }
       `}</style>
-    </Layout>
+    </>
   )
 }
+
+
+Homepage.getInitialProps = async () => {
+  const allProjects = await getProjects();
+  const res2 = await getHomepage()
+  // const allProjects = res.map(p => p.fields)
+  const homeContent = res2.map(p => p.fields)[0]
+
+  return { allProjects, homeContent };
+};
 
 export default Homepage

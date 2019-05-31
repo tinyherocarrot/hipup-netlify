@@ -1,35 +1,43 @@
-// TODO: dynamically generate pathMap
+const { parsed: localEnv } = require("dotenv").config()
+const webpack = require("webpack")
+const { getProjectPaths } = require("./api/get-projects.js")
 
+// TODO: dynamically generate pathMap
 module.exports = {
-    webpack: (cfg) => {
-        cfg.module.rules.push(
-            {
-                test: /\.md$/,
-                use: 'frontmatter-markdown-loader'
-            },
-            {
-                test: /\.js/,
-                loader: 'import-glob'
-            },
-        )
-        cfg.node = {fs: 'empty'}
-        return cfg;
-    },
-    // exportPathMap: async (defaultPathMap) => {
-		// 		const allProjects = await require("./content/_projects/*.md")
-		// 		const projectPaths = allProjects.reduce((acc, curr) => {
-		// 				const { title } = curr.attributes
-		// 				const slug = title.replace(/\s+/g, '-').toLowerCase();
-		// 				const path = {
-		// 						[`project/${slug}`]: `{ page: '/project', query: { title: '${title}' } }`
-		// 				}
-		// 				return { ...acc, ...path }
-		// 		}, {})
-    //     return {
-    //         '/': { page: '/' },
-    //         '/projects': { page: '/allProjects', query: { title: 'Projects' } },
-    //         '/publications': { page: '/publications', query: { title: 'Publications' }  },
-    //         ...projectPaths
-    //     }
-    // }
+  webpack: cfg => {
+    cfg.module.rules.push(
+      {
+        test: /\.md$/,
+        use: "frontmatter-markdown-loader"
+      },
+      {
+        test: /\.js/,
+        loader: "import-glob"
+      }
+    )
+    cfg.plugins.push(new webpack.EnvironmentPlugin(localEnv))
+    cfg.node = { fs: "empty" }
+    return cfg
+  },
+  exportPathMap: async defaultPathMap => {
+    const pathMap = {
+      "/": { page: "/" },
+      "/projects": { page: "/projects", query: { title: "Projects" } },
+      "/publications": {
+        page: "/publications",
+        query: { title: "Publications" }
+      }
+    }
+
+    // now get the dynamic stuff:
+    const projectPaths = await getProjectPaths()
+    projectPaths.map(p => {
+      pathMap[`/project/${p.projectName}`] = {
+        page: "/project",
+        query: { id: p.id }
+      }
+    })
+
+    return pathMap
+  }
 }

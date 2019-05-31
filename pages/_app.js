@@ -1,13 +1,9 @@
 import React from "react"
 import App, { Container } from "next/app"
 
-import allProjects from "../content/_projects/*.md"
-console.log(allProjects)
+import Layout from "../components/Layout.js"
 
 class MyApp extends App {
-  state = {
-    projects: allProjects
-  }
 
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
@@ -21,11 +17,12 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props
-    const { projects } = this.state
 
     return (
       <Container>
-        <Component {...pageProps} projects={projects} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Container>
     )
   }
