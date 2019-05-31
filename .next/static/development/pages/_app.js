@@ -103,7 +103,7 @@ var _jsxFileName = "/Users/tinyherocarrot/projects/hipup-netlify/components/Head
 
 
 var NavLinks = next_dynamic__WEBPACK_IMPORTED_MODULE_3___default()(function () {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ./NavLinks */ "./components/NavLinks.js"));
+  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ./NavLinks */ "./components/NavLinks.js"));
 }, {
   ssr: false,
   loadableGenerated: {

@@ -3,11 +3,12 @@ import Head from "next/head"
 
 import ProjectLink from "../components/ProjectLink"
 
-import { getProjects } from "../api/get-projects.js"
+import { getProjects, getOneProject } from "../api/get-projects.js"
 
 const Projects = ({ allProjects }) => {
   const [filter, toggleFilter] = useState("Current")
-
+  console.log("HELLO IT ME ~~~ *** ~~~")
+  getOneProject('4a2Kb7BwZiaTz9xS4b5BJi')
   return (
     <>
       <Head>
