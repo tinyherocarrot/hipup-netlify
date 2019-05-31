@@ -28,7 +28,7 @@ module.exports = {
     // now get the dynamic stuff:
     const projectPaths = await getProjectPaths()
     projectPaths.map(p => {
-      pathMap[`/project/${p.projectName}`] = {
+      pathMap[`/projects/${p.projectName}`] = {
         page: "/project",
         query: { id: p.id }
       }

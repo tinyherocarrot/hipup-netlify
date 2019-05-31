@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const ProjectLink = ({ projectName, entryId }) => (
   <>
-    <Link href={`/project?id=${entryId}`} as={`project/${projectName}`}>
+    <Link href={`/project?id=${entryId}`} as={`projects/${projectName}`}>
       <div className="project-card">
         <div className="project-img" />
         <h2>{projectName}</h2>
