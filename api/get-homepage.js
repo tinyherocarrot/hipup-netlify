@@ -5,7 +5,7 @@ module.exports = {
     const entries = await client.getEntries({
       content_type: "homepage"
     })
-    console.log(entries.items)
+    // console.log(entries.items)
     return entries.items
   },
 }

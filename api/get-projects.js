@@ -3,18 +3,18 @@ const client = require("./client.js")
 module.exports = {
   getAllEntries: async () => {
     const entries = await client.getEntries()
-    console.log(entries.items)
+    // console.log(entries.items)
   },
   getProjects: async () => {
     const entries = await client.getEntries({
       content_type: "project"
     })
-    console.log(entries.items)
+    // console.log(entries.items)
     return entries.items
   },
   getOneProject: async id => {
     const entry = await client.getEntry(id)
-    console.log("ENTRY GETTEN:  ", entry)
+    // console.log("ENTRY GETTEN:  ", entry)
     return entry
   },
   getProjectPaths: async () => {
@@ -26,7 +26,7 @@ module.exports = {
       const { id } = p.sys
       return { projectName, id }
     })
-    console.log("DICKS @@@@@@ ", projectPaths)
+    // console.log("DICKS @@@@@@ ", projectPaths)
     return projectPaths
   }
 }
