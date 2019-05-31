@@ -1,4 +1,4 @@
-import client from "./client.js"
+const client = require("./client.js")
 
 module.exports = {
   getPublications: async () => {
