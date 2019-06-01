@@ -11,7 +11,7 @@ const ProjectView = ({ project }) => {
   return (
     <>
       <Head>
-        <title>HIPUP | {project.projectName}</title>
+        <title>HIPUP | {project.fields.projectName}</title>
       </Head>
       <section>
         <img
@@ -21,14 +21,14 @@ const ProjectView = ({ project }) => {
           alt=""
         />
       </section>
-      <h1>{project.projectName.toUpperCase()}</h1>
+      <h1>{project.fields.projectName.toUpperCase()}</h1>
       <section className="centered-margined">
-        <p>{project.projectDescription}</p>
+        <p>{project.fields.projectDescription}</p>
       </section>
       <section className="centered-margined">
         <h2>Eligibility</h2>
         <ul>
-          {project.requirements.map((x, i) => (
+          {project.fields.requirements.map((x, i) => (
             <li key={i}>{x}</li>
           ))}
         </ul>
@@ -36,7 +36,7 @@ const ProjectView = ({ project }) => {
       <section className="centered-margined">
         <h2>The Team</h2>
         <div className="team-grid">
-          {project.teamMembers.map(({ fields: p }, i) => (
+          {project.fields.teamMembers.map(({ fields: p }, i) => (
             <div key={i} className="profile-card">
               <img
                 className="profile-pic"
