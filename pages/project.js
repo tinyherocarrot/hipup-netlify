@@ -3,11 +3,11 @@ import Head from "next/head"
 import dynamic from "next/dynamic"
 
 import ContactForm from "../components/ContactForm.js"
-
+import allProjects from "../data/project.json";
 // import { getOneProject } from "../api/get-projects.js"
 
 const ProjectView = ({ project }) => {
-  // console.log(project)
+  console.log(project)
   return (
     <>
       <Head>
@@ -142,8 +142,9 @@ const ProjectView = ({ project }) => {
 }
 
 ProjectView.getInitialProps = async ({ query: { id } }) => {
-  const res = await getOneProject(id)
-  const project = res.fields
+  // const res = await getOneProject(id)
+  // const project = res.fields
+  const project = allProjects.find(x => x.sys.id === id)
   return { project }
 }
 
