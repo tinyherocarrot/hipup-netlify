@@ -5,11 +5,15 @@ import Head from "next/head"
 import Button from "../components/Button"
 import ProjectLink from "../components/ProjectLink"
 
-import { getAllEntries, getProjects } from "../api/get-projects.js"
-import { getHomepage } from "../api/get-homepage.js"
+// import { getAllEntries, getProjects } from "../api/get-projects.js"
+// import { getHomepage } from "../api/get-homepage.js"
+import allProjects from "../data/project.json";
+import homeContent from "../data/homepage.json"
 
-const Homepage = ({ allProjects, homeContent }) => {
-  console.log(allProjects)
+// const Homepage = ({ allProjects, homeContent }) => {
+const Homepage = () => {
+  console.log('projects', allProjects)
+  console.log('homeContent', homeContent)
   return (
     <>
       <Head>
@@ -84,13 +88,13 @@ const Homepage = ({ allProjects, homeContent }) => {
 }
 
 
-Homepage.getInitialProps = async () => {
-  const allProjects = await getProjects();
-  const res2 = await getHomepage()
-  // const allProjects = res.map(p => p.fields)
-  const homeContent = res2.map(p => p.fields)[0]
+// Homepage.getInitialProps = async () => {
+//   const allProjects = await getProjects();
+//   const res2 = await getHomepage()
+//   // const allProjects = res.map(p => p.fields)
+//   const homeContent = res2.map(p => p.fields)[0]
 
-  return { allProjects, homeContent };
-};
+//   return { allProjects, homeContent };
+// };
 
 export default Homepage

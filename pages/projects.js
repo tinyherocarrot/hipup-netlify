@@ -3,12 +3,12 @@ import Head from "next/head"
 
 import ProjectLink from "../components/ProjectLink"
 
-import { getProjects, getOneProject } from "../api/get-projects.js"
+// import { getProjects, getOneProject } from "../api/get-projects.js"
+import allProjects from "../data/project.json";
 
-const Projects = ({ allProjects }) => {
+const Projects = () => {
   const [filter, toggleFilter] = useState("Current")
-  console.log("HELLO IT ME ~~~ *** ~~~")
-  getOneProject('4a2Kb7BwZiaTz9xS4b5BJi')
+
   return (
     <>
       <Head>
@@ -52,9 +52,9 @@ const Projects = ({ allProjects }) => {
   )
 }
 
-Projects.getInitialProps = async () => {
-  const allProjects = await getProjects()
-  return { allProjects }
-}
+// Projects.getInitialProps = async () => {
+//   const allProjects = await getProjects()
+//   return { allProjects }
+// }
 
 export default Projects

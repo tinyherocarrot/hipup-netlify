@@ -4,7 +4,7 @@ import dynamic from "next/dynamic"
 
 import ContactForm from "../components/ContactForm.js"
 
-import { getOneProject } from "../api/get-projects.js"
+// import { getOneProject } from "../api/get-projects.js"
 
 const ProjectView = ({ project }) => {
   // console.log(project)

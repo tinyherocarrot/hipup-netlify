@@ -1,11 +1,14 @@
 import React, { useState } from "react"
 import Head from "next/head"
 
-import { getPublications, getCategories } from "../api/get-publications.js"
+// import { getPublications, getCategories } from "../api/get-publications.js"
+import allPublications from "../data/publications.json"
+import allCategories from "../data/publicationCategories.json"
 
-const Publications = ({ allPublications, allCategories }) => {
+const Publications = () => {
   const [currentCategory, changeCategory] = useState("")
   console.log(allPublications)
+  console.log(allCategories)
   return (
     <>
       <Head>
@@ -15,21 +18,21 @@ const Publications = ({ allPublications, allCategories }) => {
         <aside className="categories">
           <p>All Publications</p>
           {allCategories.map(category => (
-            <p>{category.categoryName}</p>
+            <p>{category.fields.categoryName}</p>
           ))}
         </aside>
         <div className="publications">
           {allPublications
             .filter(category =>
-              currentCategory ? category === currentCategory : true
+              currentCategory ? category.fields.categoryName === currentCategory : true
             )
             .map(p => (
-              <article>
-                <a target="_blank" href={p.file.fields.file.url}>
-                  <h2>{p.publicationTitle}</h2>
+              <article key={p.sys.id}>
+                <a target="_blank" href={p.fields.file.fields.file.url}>
+                  <h2>{p.fields.publicationTitle}</h2>
                 </a>
-                <p>{p.description}</p>
-                <p>{p.authors}</p>
+                <p>{p.fields.description}</p>
+                <p>{p.fields.authors}</p>
               </article>
             ))}
         </div>
@@ -64,12 +67,12 @@ const Publications = ({ allPublications, allCategories }) => {
   )
 }
 
-Publications.getInitialProps = async () => {
-  const res = await getPublications()
-  const res2 = await getCategories()
-  const allPublications = res.map(p => p.fields)
-  const allCategories = res2.map(p => p.fields)
-  return { allPublications, allCategories }
-}
+// Publications.getInitialProps = async () => {
+//   const res = await getPublications()
+//   const res2 = await getCategories()
+//   const allPublications = res.map(p => p.fields)
+//   const allCategories = res2.map(p => p.fields)
+//   return { allPublications, allCategories }
+// }
 
 export default Publications

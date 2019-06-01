@@ -8,14 +8,18 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export"
+    "export": "npm run postinstall && npm run build && next export",
+    "postinstall": "npm run getcontent",
+    "getcontent": "node helpers/getcontent.js install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "contentful": "^7.6.0",
     "dotenv": "^8.0.0",
