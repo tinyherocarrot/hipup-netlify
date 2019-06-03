@@ -13,7 +13,7 @@ const Layout = ({ children }) => (
         rel="stylesheet"
       />
       <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
-      <style src="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"></style>
+      {/* <style src="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"></style> */}
     </Head>
 
     <Header />
