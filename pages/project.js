@@ -3,7 +3,7 @@ import Head from "next/head"
 import dynamic from "next/dynamic"
 
 import ContactForm from "../components/ContactForm.js"
-import allProjects from "../data/project.json";
+import allProjects from "../data/project.json"
 // import { getOneProject } from "../api/get-projects.js"
 
 const ProjectView = ({ project }) => {
@@ -36,36 +36,26 @@ const ProjectView = ({ project }) => {
       <section className="centered-margined">
         <h2>The Team</h2>
         <div className="team-grid">
-          {project.fields.teamMembers.map(({ fields: p }, i) => (
-            <div key={i} className="profile-card">
-              <img
-                className="profile-pic"
-                // src="https://via.placeholder.com/150.png?text=Cover+Image"
-                src={p.profilePhoto.fields.file.url}
-                alt=""
-              />
-              <p>
-                {p.fullName}
-                <br />
-                Health Educator
-                <br />{p.bio}
-              </p>
-            </div>
-          ))}
+          {project.fields.teamMembers
+            ? project.fields.teamMembers.map(({ fields: p }, i) => (
+                <div key={i} className="profile-card">
+                  <img
+                    className="profile-pic"
+                    // src="https://via.placeholder.com/150.png?text=Cover+Image"
+                    src={p.profilePhoto.fields.file.url}
+                    alt=""
+                  />
+                  <p>
+                    {p.fullName}
+                    <br />
+                    Health Educator
+                    <br />
+                    {p.bio}
+                  </p>
+                </div>
+              ))
+            : ""}
 
-          <div className="profile-card">
-            <img
-              className="profile-pic"
-              src="https://via.placeholder.com/150.png?text=Cover+Image"
-              alt=""
-            />
-            <p>
-              Eva Lee
-              <br />
-              Health Educator
-              <br />I love to cook~
-            </p>
-          </div>
           <div className="profile-card">
             <img
               className="profile-pic"
@@ -132,12 +122,11 @@ const ProjectView = ({ project }) => {
           display: flex;
           flex-direction: column;
           text-align: center;
-          max-width: 10rem
+          max-width: 10rem;
         }
         .profile-pic {
           border-radius: 50%;
           width: 8rem;
-          
         }
       `}</style>
     </>
