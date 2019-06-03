@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import Link from "next/link"
 import Head from "next/head"
-import 'normalize.css'; // Note this
 
 import Button from "../components/Button"
 import ProjectLink from "../components/ProjectLink"
@@ -11,7 +10,6 @@ import ProjectLink from "../components/ProjectLink"
 import allProjects from "../data/project.json"
 import homeContent from "../data/homepage.json"
 
-// const Homepage = ({ allProjects, homeContent }) => {
 const Homepage = () => {
   console.log("projects", allProjects)
   console.log("homeContent", homeContent)
