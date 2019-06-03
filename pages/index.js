@@ -1,19 +1,20 @@
 import React, { Component } from "react"
 import Link from "next/link"
 import Head from "next/head"
+import 'normalize.css'; // Note this
 
 import Button from "../components/Button"
 import ProjectLink from "../components/ProjectLink"
 
 // import { getAllEntries, getProjects } from "../api/get-projects.js"
 // import { getHomepage } from "../api/get-homepage.js"
-import allProjects from "../data/project.json";
+import allProjects from "../data/project.json"
 import homeContent from "../data/homepage.json"
 
 // const Homepage = ({ allProjects, homeContent }) => {
 const Homepage = () => {
-  console.log('projects', allProjects)
-  console.log('homeContent', homeContent)
+  console.log("projects", allProjects)
+  console.log("homeContent", homeContent)
   return (
     <>
       <Head>
@@ -34,13 +35,28 @@ const Homepage = () => {
       </section>
       <h1>What We Do</h1>
       <section className="centered-margined font-light">
-        <p>{homeContent.missionStatement}</p>
+        <p>{homeContent[0].fields.missionStatement}</p>
       </section>
       <h1>Get Involved</h1>
       <section className="cards">
-        {allProjects.map(({fields: { projectName }, sys: { id }}) => (
-          <ProjectLink key={id} projectName={projectName} entryId={id}/>
-        ))}
+        {allProjects.map(
+          ({
+            fields: {
+              projectName,
+              projectLogo: {
+                fields: { file: {url} }
+              }
+            },
+            sys: { id }
+          }) => (
+            <ProjectLink
+              key={id}
+              projectName={projectName}
+              projectImage={url}
+              entryId={id}
+            />
+          )
+        )}
       </section>
       <section>
         <img
@@ -74,7 +90,7 @@ const Homepage = () => {
           justify-content: center;
           gap: 30px;
           max-width: 100%;
-          margin: 0 auto;
+          margin: 0 3rem;
         }
         .card {
           flex: 1;
@@ -86,7 +102,6 @@ const Homepage = () => {
     </>
   )
 }
-
 
 // Homepage.getInitialProps = async () => {
 //   const allProjects = await getProjects();

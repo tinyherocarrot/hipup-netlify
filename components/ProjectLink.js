@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "next/link"
 
-const ProjectLink = ({ projectName, entryId }) => (
+const ProjectLink = ({ projectName, projectImage, entryId }) => (
   <>
     <Link prefetch href={`/project?id=${entryId}`} as={`projects/${projectName}`}>
       <div className="project-card">
@@ -20,20 +20,28 @@ const ProjectLink = ({ projectName, entryId }) => (
         text-decoration: underline;
       }
       p {
+        margin: 0 0 0.5rem 0;
         font-weight: lighter
       }
+      h2 {
+        margin: 0.5rem 0 0.25rem 0;
+      }
       .project-card {
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        flex: 1
+        flex: 1;
         cursor: pointer;
+        padding: 1rem;
+        border: 1px solid transparent;
       }
       .project-card:hover {
-        background-color: lightgrey
+        border: 1px solid grey;
       }
       .project-img {
-        background: url("https://placekitten.com/305/205") no-repeat left top;
+        background: url(${projectImage}) no-repeat center;
+        background-size: contain;
         height: 150px;
         width: 300px;
       }

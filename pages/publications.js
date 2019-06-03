@@ -18,7 +18,7 @@ const Publications = () => {
         <aside className="categories">
           <p>All Publications</p>
           {allCategories.map(category => (
-            <p>{category.fields.categoryName}</p>
+            <p key={category.sys.id}>{category.fields.categoryName}</p>
           ))}
         </aside>
         <div className="publications">
@@ -40,6 +40,7 @@ const Publications = () => {
 
       <style jsx>{`
         .publications-container {
+          margin-top: 3rem;
           display: grid;
           grid-template-columns: 1fr 2fr;
           grid-template-areas: "aside main main";
@@ -53,7 +54,7 @@ const Publications = () => {
           border-left: 1px solid black;
           padding-left: 2rem;
         }
-        h1 {
+        h2 {
           text-align: left;
         }
         article {

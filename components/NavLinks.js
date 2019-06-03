@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import Link from "next/link"
 
 const navLinks = [
-  { name: "Projects", maskedPath: "/projects" },
-  { name: "Publications", maskedPath: "/publications" }
+  { name: "Projects", path: "/projects" },
+  { name: "Publications", path: "/publications" }
 ]
 
 const NavLinks = () => {
@@ -24,7 +24,7 @@ const NavLinks = () => {
       {width > 768 ? (
         <>
           {navLinks.map(link => (
-            <Link as={link.maskedPath} href={`${link.path}?title=${link.name}`} key={link.name}>
+            <Link href={link.path} key={link.name}>
               <a>{link.name}</a>
             </Link>
           ))}
@@ -37,19 +37,18 @@ const NavLinks = () => {
       )}
 
       <style jsx>{`
-
-
         a {
           color: black;
           padding: 0.6rem;
           margin-left: 2rem;
           pointer: cursor;
           border-bottom: 2px solid transparent;
-          transition: border-bottom 0.5s;
-        } 
+          transition: border-bottom 0.5s, color 0.4s;
+        }
 
         a:hover {
-          border-bottom: 2px solid black;
+          border-bottom: 2px solid rgba(75, 143, 204, 1);
+          color: rgba(75, 143, 204, 1);
         }
       `}</style>
     </div>
@@ -80,7 +79,7 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
       <div className="logo">
         <Link href="/">
           <a>HIPUP</a>
-        </Link>  
+        </Link>
       </div>
       <div className="mobile-navlinks">
         {navLinks.map(link => (
@@ -95,7 +94,7 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
             border: none;
             background-color: transparent;
             cursor: pointer;
-            float: right
+            float: right;
           }
           .menu-close:hover {
             opacity: 0.6;

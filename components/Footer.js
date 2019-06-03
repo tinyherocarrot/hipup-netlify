@@ -1,9 +1,16 @@
 import React from "react"
+import homeContent from "../data/homepage.json"
 
 const Footer = () => {
   return (
     <footer className="footer-container">
-      <div>PHI LOGO</div>
+      <div>
+        <img
+          src={homeContent[0].fields.phiLogo.fields.file.url}
+          alt="PHI Logo"
+          className="phi-logo"
+        />
+      </div>
       <address>
         <p>
           Public Health Institute <br />
@@ -27,6 +34,10 @@ const Footer = () => {
           address {
             text-align: right;
             font-style: normal;
+          }
+          .phi-logo {
+            background: transparent !important;
+            max-height: 100px;
           }
         `}
       </style>

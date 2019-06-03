@@ -24,12 +24,14 @@
     "contentful": "^7.6.0",
     "dotenv": "^8.0.0",
     "next": "^8.1.0",
+    "normalize.css": "^8.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "frontmatter-markdown-loader": "^1.6.0"
+    "css-loader": "^2.1.1",
+    "style-loader": "^0.23.1"
   }
 }

@@ -132,9 +132,12 @@ const ProjectView = ({ project }) => {
           display: flex;
           flex-direction: column;
           text-align: center;
+          max-width: 10rem
         }
         .profile-pic {
           border-radius: 50%;
+          width: 8rem;
+          
         }
       `}</style>
     </>

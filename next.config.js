@@ -10,35 +10,29 @@ const projectPaths = projects.map(p => ({
 // TODO: dynamically generate pathMap
 module.exports = {
   webpack: cfg => {
-    cfg.module.rules.push({
-      test: /\.md$/,
-      use: "frontmatter-markdown-loader"
-    })
+    cfg.module.rules.push(
+      {
+        test: /\.md$/,
+        use: "frontmatter-markdown-loader"
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
+      }
+    )
     cfg.plugins.push(new webpack.EnvironmentPlugin(localEnv))
     cfg.node = { fs: "empty" }
     return cfg
   },
-  //   serverRuntimeConfig: {
-  //     // Will only be available on the server side
-  //     mySecret: 'secret',
-  //     secondSecret: process.env.SECOND_SECRET // Pass through env variables
-  //   },
-  //   publicRuntimeConfig: {
-  //     // Will be available on both server and client
-  //     staticFolder: '/static'
-  //   },
+
   exportPathMap: async defaultPathMap => {
     const pathMap = {
       "/": { page: "/" },
-      "/projects": { page: "/projects", query: { title: "Projects" } },
-      "/publications": {
-        page: "/publications",
-        query: { title: "Publications" }
-      }
+      "/projects": { page: "/projects" },
+      "/publications": { page: "/publications" }
     }
 
     // now get the dynamic stuff:
-    // const projectPaths = await getProjectPaths()
     projectPaths.map(p => {
       pathMap[`/projects/${p.projectName}`] = {
         page: "/project",

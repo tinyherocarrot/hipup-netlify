@@ -4,7 +4,7 @@ import Head from "next/head"
 import ProjectLink from "../components/ProjectLink"
 
 // import { getProjects, getOneProject } from "../api/get-projects.js"
-import allProjects from "../data/project.json";
+import allProjects from "../data/project.json"
 
 const Projects = () => {
   const [filter, toggleFilter] = useState("Current")
@@ -16,9 +16,16 @@ const Projects = () => {
       </Head>
 
       <div className="project-filters">
-        <a onClick={() => toggleFilter("Current")}>Current</a>
-        {"  |  "}
-        <a onClick={() => toggleFilter("Past")}>Past</a>
+        <a
+          style={{ textDecoration: filter === "Current" ? "underline" : "" }}
+          onClick={() => toggleFilter("Current")}>
+          Current
+        </a>
+        <a
+          style={{ textDecoration: filter === "Current" ? "" : "underline" }}
+          onClick={() => toggleFilter("Past")}>
+          Past
+        </a>
       </div>
 
       <div className="project-grid centered-margined">
@@ -26,8 +33,16 @@ const Projects = () => {
           .filter(({ fields: { current } }) =>
             filter === "Current" ? current : !current
           )
-          .map(({ fields: { projectName }, sys: { id } }) => (
-            <ProjectLink key={id} projectName={projectName} entryId={id} />
+          .map(({
+            fields: {
+              projectName,
+              projectLogo: {
+                fields: { file: {url} }
+              }
+            },
+            sys: { id }
+          }) => (
+            <ProjectLink key={id} projectName={projectName} projectImage={url} entryId={id} />
           ))}
       </div>
 
@@ -36,10 +51,13 @@ const Projects = () => {
           cursor: pointer;
         }
         .project-filters {
+          display: flex;
+          justify-content: space-between;
+          width: 7rem;
           font-size: 1rem;
           font-weight: lighter;
           text-align: center;
-          margin: 2rem auto;
+          margin: 3rem auto;
         }
         .project-grid {
           display: grid;
