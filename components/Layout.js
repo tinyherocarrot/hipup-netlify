@@ -1,6 +1,6 @@
 import React from "react"
 import Head from "next/head"
-import 'normalize.css';
+// import 'normalize.css';
 
 import Header from "./Header"
 import Footer from "./Footer"
@@ -13,7 +13,9 @@ const Layout = ({ children }) => (
         rel="stylesheet"
       />
       <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+      <style src="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"></style>
     </Head>
+
     <Header />
     <div className="content">{children}</div>
     <Footer />
