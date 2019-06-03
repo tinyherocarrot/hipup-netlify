@@ -18,9 +18,9 @@ const types = [
 ]
 
 const getcontent = async function() {
-  console.log("> Starting import...")
+  // console.log("> Starting import...")
   for (const type of types) {
-    console.log(" > getting content for ", type)
+    // console.log(" > getting content for ", type)
     const entries = await client.getEntries({
       content_type: type,
       include: 3
@@ -31,7 +31,7 @@ const getcontent = async function() {
       path.join(__dirname, "..", "data", `${type}.json`),
       JSON.stringify(items)
     )
-    console.log("> Content gotten and written for", type)
+    // console.log("> Content gotten and written for", type)
   }
 }
 
