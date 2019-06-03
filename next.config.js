@@ -1,6 +1,5 @@
 const { parsed: localEnv } = require("dotenv").config()
 const webpack = require("webpack")
-// const { getProjectPaths } = require("./api/get-projects.js")
 const projects = require("./data/project.json")
 const projectPaths = projects.map(p => ({
   projectName: p.fields.projectName,
@@ -10,16 +9,10 @@ const projectPaths = projects.map(p => ({
 // TODO: dynamically generate pathMap
 module.exports = {
   webpack: cfg => {
-    cfg.module.rules.push(
-      {
-        test: /\.md$/,
-        use: "frontmatter-markdown-loader"
-      },
-      {
-        test: /\.css$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
-      }
-    )
+    cfg.module.rules.push({
+      test: /\.md$/,
+      use: "frontmatter-markdown-loader"
+    })
     cfg.plugins.push(new webpack.EnvironmentPlugin(localEnv))
     cfg.node = { fs: "empty" }
     return cfg
