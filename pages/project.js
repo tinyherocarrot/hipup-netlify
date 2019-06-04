@@ -1,10 +1,8 @@
-// import { withRouter } from "next/router"
 import Head from "next/head"
 import dynamic from "next/dynamic"
 
 import ContactForm from "../components/ContactForm.js"
 import allProjects from "../data/project.json"
-// import { getOneProject } from "../api/get-projects.js"
 
 const ProjectView = ({ project }) => {
   console.log(project)
@@ -45,13 +43,9 @@ const ProjectView = ({ project }) => {
                     src={p.profilePhoto.fields.file.url}
                     alt=""
                   />
-                  <p>
-                    {p.fullName}
-                    <br />
-                    Health Educator
-                    <br />
-                    {p.bio}
-                  </p>
+                  <p>{p.fullName}</p>
+                  <p>Health Educator</p>
+                  <p>{p.bio}</p>
                 </div>
               ))
             : ""}
@@ -75,12 +69,9 @@ const ProjectView = ({ project }) => {
               src="https://via.placeholder.com/150.png?text=Cover+Image"
               alt=""
             />
-            <p>
-              Eva Lee
-              <br />
-              Health Educator
-              <br />I love to cook~
-            </p>
+            <p>Eva Lee</p>
+            <p>Health Educator</p>
+            <p>I love to cook~</p>
           </div>
         </div>
       </section>
@@ -124,9 +115,13 @@ const ProjectView = ({ project }) => {
           text-align: center;
           max-width: 10rem;
         }
+        .profile-card > p {
+          margin: 0.2rem;
+        }
         .profile-pic {
           border-radius: 50%;
           width: 8rem;
+          margin: 0 auto;
         }
       `}</style>
     </>
@@ -134,8 +129,6 @@ const ProjectView = ({ project }) => {
 }
 
 ProjectView.getInitialProps = async ({ query: { id } }) => {
-  // const res = await getOneProject(id)
-  // const project = res.fields
   const project = allProjects.find(x => x.sys.id === id)
   return { project }
 }

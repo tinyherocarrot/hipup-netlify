@@ -1,14 +1,13 @@
 import React, { useState } from "react"
 import Head from "next/head"
 
-// import { getPublications, getCategories } from "../api/get-publications.js"
 import allPublications from "../data/publications.json"
 import allCategories from "../data/publicationCategories.json"
 
 const Publications = () => {
   const [currentCategory, changeCategory] = useState("")
-  console.log(allPublications)
-  console.log(allCategories)
+  // console.log(allPublications)
+  // console.log(allCategories)
   return (
     <>
       <Head>
@@ -16,15 +15,25 @@ const Publications = () => {
       </Head>
       <div className="publications-container">
         <aside className="categories">
-          <p>All Publications</p>
-          {allCategories.map(category => (
-            <p key={category.sys.id}>{category.fields.categoryName}</p>
-          ))}
+          <ul>
+            <li>
+              <a onClick={() => changeCategory("")}>All Publications</a>
+            </li>
+            {allCategories.map(category => (
+              <li key={category.sys.id}>
+                <a onClick={() => changeCategory(category.fields.categoryName)}>
+                  {category.fields.categoryName}
+                </a>
+              </li>
+            ))}
+          </ul>
         </aside>
         <div className="publications">
           {allPublications
             .filter(category =>
-              currentCategory ? category.fields.categoryName === currentCategory : true
+              currentCategory
+                ? category.fields.categoryName === currentCategory
+                : true
             )
             .map(p => (
               <article key={p.sys.id}>
@@ -39,6 +48,11 @@ const Publications = () => {
       </div>
 
       <style jsx>{`
+        li {
+          list-style: none;
+          margin-bottom: 1.2rem;
+          cursor: pointer;
+        }
         .publications-container {
           margin-top: 3rem;
           display: grid;
@@ -51,29 +65,23 @@ const Publications = () => {
           overflow: scroll;
         }
         .publications {
-          border-left: 1px solid black;
-          padding-left: 2rem;
+          padding-left: 4rem;
         }
         h2 {
           text-align: left;
+          color: black;
+          margin: 0.5rem 0rem 0.1rem 0rem;
         }
         article {
           margin-bottom: 3rem;
         }
         article > p {
           font-weight: lighter;
+          margin: 0;
         }
       `}</style>
     </>
   )
 }
-
-// Publications.getInitialProps = async () => {
-//   const res = await getPublications()
-//   const res2 = await getCategories()
-//   const allPublications = res.map(p => p.fields)
-//   const allCategories = res2.map(p => p.fields)
-//   return { allPublications, allCategories }
-// }
 
 export default Publications

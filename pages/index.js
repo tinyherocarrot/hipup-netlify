@@ -5,14 +5,12 @@ import Head from "next/head"
 import Button from "../components/Button"
 import ProjectLink from "../components/ProjectLink"
 
-// import { getAllEntries, getProjects } from "../api/get-projects.js"
-// import { getHomepage } from "../api/get-homepage.js"
 import allProjects from "../data/project.json"
 import homeContent from "../data/homepage.json"
 
 const Homepage = () => {
-  console.log("projects", allProjects)
-  console.log("homeContent", homeContent)
+  // console.log("projects", allProjects)
+  // console.log("homeContent", homeContent)
   return (
     <>
       <Head>
@@ -42,7 +40,9 @@ const Homepage = () => {
             fields: {
               projectName,
               projectLogo: {
-                fields: { file: {url} }
+                fields: {
+                  file: { url }
+                }
               }
             },
             sys: { id }
@@ -56,9 +56,8 @@ const Homepage = () => {
           )
         )}
       </section>
-      <section>
+      <section className="group-photo-container">
         <img
-          className="centered-margined"
           src="https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic"
           alt="hipup-group-photo"
         />
@@ -93,21 +92,16 @@ const Homepage = () => {
         .card {
           flex: 1;
         }
-
+        .group-photo-container {
+          display: flex;
+          justify-content: space-around;
+          padding-top: 3rem;
+        }
         h1 {
         }
       `}</style>
     </>
   )
 }
-
-// Homepage.getInitialProps = async () => {
-//   const allProjects = await getProjects();
-//   const res2 = await getHomepage()
-//   // const allProjects = res.map(p => p.fields)
-//   const homeContent = res2.map(p => p.fields)[0]
-
-//   return { allProjects, homeContent };
-// };
 
 export default Homepage

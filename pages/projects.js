@@ -3,7 +3,6 @@ import Head from "next/head"
 
 import ProjectLink from "../components/ProjectLink"
 
-// import { getProjects, getOneProject } from "../api/get-projects.js"
 import allProjects from "../data/project.json"
 
 const Projects = () => {
@@ -17,14 +16,14 @@ const Projects = () => {
 
       <div className="project-filters">
         <a
-          style={{ textDecoration: filter === "Current" ? "underline" : "" }}
+          style={{ borderBottom: filter === "Current" ? "1px solid black" : "" }}
           onClick={() => toggleFilter("Current")}>
-          Current
+          CURRENT
         </a>
         <a
-          style={{ textDecoration: filter === "Current" ? "" : "underline" }}
+          style={{ borderBottom: filter === "Current" ? "" : "1px solid black" }}
           onClick={() => toggleFilter("Past")}>
-          Past
+          PAST
         </a>
       </div>
 
@@ -49,15 +48,18 @@ const Projects = () => {
       <style jsx>{`
         a {
           cursor: pointer;
+          padding-bottom: 0.2rem;
         }
         .project-filters {
           display: flex;
           justify-content: space-between;
-          width: 7rem;
-          font-size: 1rem;
+          width: 10rem;
+          font-size: 1.2rem;
           font-weight: lighter;
           text-align: center;
           margin: 3rem auto;
+          font-family: 'Playfair Display', serif;
+          line-height: 1.2rem
         }
         .project-grid {
           display: grid;
@@ -69,10 +71,5 @@ const Projects = () => {
     </>
   )
 }
-
-// Projects.getInitialProps = async () => {
-//   const allProjects = await getProjects()
-//   return { allProjects }
-// }
 
 export default Projects

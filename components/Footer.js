@@ -22,7 +22,7 @@ const Footer = () => {
       <style jsx>
         {`
           .footer-container {
-            background-color: grey;
+            background-color: rgba(75, 143, 204, 0.8);
             position: absolute;
             bottom: 0;
             padding: 2rem;

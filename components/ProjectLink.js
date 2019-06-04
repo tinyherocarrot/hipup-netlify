@@ -33,13 +33,14 @@ const ProjectLink = ({ projectName, projectImage, entryId }) => (
         justify-content: space-around;
         flex: 1;
         cursor: pointer;
-        padding: 1rem;
+        padding: 1.5rem;
         border: 1px solid transparent;
       }
       .project-card:hover {
         border: 1px solid grey;
       }
       .project-img {
+        margin: 0 auto;
         background: url(${projectImage}) no-repeat center;
         background-size: contain;
         height: 150px;
