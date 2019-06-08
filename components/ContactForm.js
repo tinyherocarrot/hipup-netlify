@@ -27,7 +27,8 @@ class ContactForm extends Component<Props, State> {
   state = {
     formControls: {
       email: "",
-      message: "Yes let's connect! Please reach out to me at email@address.com"
+      message: "Yes let's connect! Please reach out to me at email@address.com",
+      addressTo: this.props.addressTo
     }
   }
 
@@ -50,14 +51,13 @@ class ContactForm extends Component<Props, State> {
       // formControls: { email, message }
       formControls
     } = this.state
-    const { addressTo } = this.props
-    let body = { ...formControls, addressTo }
-    console.log(body)
-    alert(body)
+    // let body = { ...formControls, addressTo }
+    // console.log(body)
+    // alert(body)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", body })
+      body: encode({ "form-name": "contact", ...formControls })
     })
       .then(() => alert("Success!"))
       .catch(error => alert(error))
@@ -67,6 +67,8 @@ class ContactForm extends Component<Props, State> {
     const {
       formControls: { email, message }
     } = this.state
+    const { addressTo } = this.props
+
     return (
       <form
         name="contact"
@@ -75,6 +77,7 @@ class ContactForm extends Component<Props, State> {
         data-netlify-honeypot="bot-field"
         className="form-container">
         <input type="hidden" name="form-name" value="contact" />
+        <input type="hidden" name="addressTo" value={addressTo} />
         <input
           type="email"
           name="email"
