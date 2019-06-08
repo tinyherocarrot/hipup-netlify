@@ -52,7 +52,8 @@ class ContactForm extends Component<Props, State> {
     } = this.state
     const { addressTo } = this.props
     let body = { ...formControls, addressTo }
-    // console.log(body)
+    console.log(body)
+    alert(body)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
