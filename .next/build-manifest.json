@@ -10,6 +10,14 @@
     "/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
+    ],
+    "/project": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/publications": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }

@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import React, { Component } from "react"
 import Button from "./Button"
 
 type Props = {
@@ -11,7 +11,13 @@ type State = {
     email: string,
     message: string
   }
-};
+}
+
+const encode = data => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
+}
 
 class ContactForm extends Component<Props, State> {
   // TODO: fill in a defaultProps email?
@@ -20,32 +26,52 @@ class ContactForm extends Component<Props, State> {
   }
   state = {
     formControls: {
-      email: '',
-      message: '',
-    },
-  };
+      email: "",
+      message: "Yes let's connect! Please reach out to me at email@address.com"
+    }
+  }
 
   changeHandler = (event: SyntheticInputEvent<HTMLInputElement>) => {
-    const { currentTarget: { name, value } } = event;
-    const { formControls } = this.state;
+    const {
+      currentTarget: { name, value }
+    } = event
+    const { formControls } = this.state
     this.setState({
       formControls: {
         ...formControls,
-        [name]: value,
-      },
-    });
+        [name]: value
+      }
+    })
   }
 
   submitHandler = (event: SyntheticEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    const { formControls: { email, message } } = this.state;
-    console.log(email, message);
-  };
+    event.preventDefault()
+    const {
+      // formControls: { email, message }
+      formControls
+    } = this.state
+    // console.log(email, message)
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...formControls })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error))
+  }
 
   render() {
-    const { formControls: { email, message } } = this.state;
+    const {
+      formControls: { email, message }
+    } = this.state
     return (
-      <form className="form-container">
+      <form
+        name="contact"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        className="form-container">
+        <input type="hidden" name="form-name" value="contact" />
         <input
           type="email"
           name="email"
@@ -56,7 +82,6 @@ class ContactForm extends Component<Props, State> {
         <textarea
           type="text"
           name="message"
-          placeholder="Yes let's connect! Please reach out to me at email@address.com"
           value={message}
           onChange={this.changeHandler}
         />
@@ -74,8 +99,8 @@ class ContactForm extends Component<Props, State> {
           `}
         </style>
       </form>
-    );
+    )
   }
 }
 
-export default ContactForm;
+export default ContactForm

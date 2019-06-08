@@ -12,8 +12,8 @@ const client = contentful.createClient({
 const getcontent = async function() {
  
   const entries = await client.getEntries()
-  const data = {}
   const items = entries.items
+  const data = {}
 
   items.forEach(item => {
     let contentType = item.sys.contentType.sys.id
@@ -29,7 +29,6 @@ const getcontent = async function() {
       path.join(__dirname, "..", "data", `${type}.json`),
       JSON.stringify(data[type])
     )
-    // console.log("> Content gotten and written for", type)
   }
 }
 

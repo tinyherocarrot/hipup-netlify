@@ -1,13 +1,21 @@
 import React from "react"
 import Link from "next/link"
 
-const ProjectLink = ({ projectName, projectImage, entryId }) => (
+const ProjectLink = ({
+  projectName,
+  projectImage,
+  projectTagline,
+  entryId
+}) => (
   <>
-    <Link prefetch href={`/project?id=${entryId}`} as={`projects/${projectName}`}>
+    <Link
+      prefetch
+      href={`/project?id=${entryId}`}
+      as={`projects/${projectName}`}>
       <div className="project-card">
         <div className="project-img" />
         <h2>{projectName}</h2>
-        <p>A project tagline</p>
+        <p>{projectTagline}</p>
       </div>
     </Link>
 
@@ -21,7 +29,7 @@ const ProjectLink = ({ projectName, projectImage, entryId }) => (
       }
       p {
         margin: 0 0 0.5rem 0;
-        font-weight: lighter
+        font-weight: lighter;
       }
       h2 {
         margin: 0.5rem 0 0.25rem 0;
@@ -31,7 +39,6 @@ const ProjectLink = ({ projectName, projectImage, entryId }) => (
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        flex: 1;
         cursor: pointer;
         padding: 1.5rem;
         border: 1px solid transparent;

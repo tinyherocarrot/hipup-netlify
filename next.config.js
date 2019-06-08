@@ -1,6 +1,6 @@
 const { parsed: localEnv } = require("dotenv").config()
 const webpack = require("webpack")
-const projects = require("./data/project.json")
+const projects = require("./data/currentProjects.json")
 const projectPaths = projects.map(p => ({
   projectName: p.fields.projectName,
   id: p.sys.id

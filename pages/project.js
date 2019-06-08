@@ -2,7 +2,7 @@ import Head from "next/head"
 import dynamic from "next/dynamic"
 
 import ContactForm from "../components/ContactForm.js"
-import allProjects from "../data/project.json"
+import allProjects from "../data/currentProjects.json"
 
 const ProjectView = ({ project }) => {
   console.log(project)

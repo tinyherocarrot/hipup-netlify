@@ -3,7 +3,11 @@ import Head from "next/head"
 
 import ProjectLink from "../components/ProjectLink"
 
-import allProjects from "../data/project.json"
+import currentProjects from "../data/currentProjects.json"
+import pastProjects from "../data/pastProjects.json"
+
+// TODO: reformat PAST PROJECT dates
+// TODO: make PAST PROJECT desc lighter font
 
 const Projects = () => {
   const [filter, toggleFilter] = useState("Current")
@@ -16,52 +20,32 @@ const Projects = () => {
 
       <div className="project-filters">
         <a
-          style={{
-            borderBottom: filter === "Current" ? "1px solid black" : ""
-          }}
+          className="link--filter-current"
           onClick={() => toggleFilter("Current")}>
           CURRENT
         </a>
-        <a
-          style={{
-            borderBottom: filter === "Current" ? "" : "1px solid black"
-          }}
-          onClick={() => toggleFilter("Past")}>
+        <a className="link--filter-past" onClick={() => toggleFilter("Past")}>
           PAST
         </a>
       </div>
 
       <div className="project-grid centered-margined">
-        {allProjects
-          .filter(({ fields: { current } }) =>
-            filter === "Current" ? current : !current
-          )
-          .map(
-            ({
-              fields: {
-                projectName,
-                projectLogo: {
-                  fields: {
-                    file: { url }
-                  }
-                }
-              },
-              sys: { id }
-            }) => (
-              <ProjectLink
-                key={id}
-                projectName={projectName}
-                projectImage={url}
-                entryId={id}
-              />
-            )
-          )}
+        {filter === "Current" ? <CurrentProjects /> : <PastProjects />}
       </div>
 
       <style jsx>{`
         a {
           cursor: pointer;
           padding-bottom: 0.2rem;
+        }
+        a:hover {
+          opacity: 0.6
+        }
+        .link--filter-current {
+          border-bottom: ${filter === "Current" ? "1px solid black" : ""};
+        }
+        .link--filter-past {
+          border-bottom: ${filter === "Current" ? "" : "1px solid black"};
         }
         .project-filters {
           display: flex;
@@ -86,3 +70,63 @@ const Projects = () => {
 }
 
 export default Projects
+
+const CurrentProjects = () => (
+  <>
+    {currentProjects.map(
+      ({
+        fields: {
+          projectName,
+          projectTagline,
+          projectLogo: {
+            fields: {
+              file: { url }
+            }
+          }
+        },
+        sys: { id }
+      }) => (
+        <ProjectLink
+          key={id}
+          projectName={projectName}
+          projectImage={url}
+          projectTagline={projectTagline}
+          entryId={id}
+        />
+      )
+    )}
+  </>
+)
+
+const PastProjects = () => (
+  <>
+    {pastProjects
+      .sort((curr, next) => {
+        let currDate = new Date(curr.fields.endDate)
+        let nextDate = new Date(next.fields.endDate)
+        if (currDate < nextDate) {
+          return -1
+        } else if (currDate > nextDate) {
+          return 1
+        } else {
+          return 0
+        }
+      })
+      .map(
+        ({
+          fields: { projectName, startDate, endDate, description, grantDetails }
+        }) => (
+          <article>
+            <small>
+              {startDate.slice(0, 4)} - {endDate.slice(0, 4)}
+            </small>
+            <h2>{projectName}</h2>
+            <p className="font-light">{description}</p>
+            <small>
+              <i>{grantDetails}</i>
+            </small>
+          </article>
+        )
+      )}
+  </>
+)

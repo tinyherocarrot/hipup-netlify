@@ -5,7 +5,7 @@ import Head from "next/head"
 import Button from "../components/Button"
 import ProjectLink from "../components/ProjectLink"
 
-import allProjects from "../data/project.json"
+import allProjects from "../data/currentProjects.json"
 import homeContent from "../data/homepage.json"
 
 const Homepage = () => {
@@ -39,6 +39,7 @@ const Homepage = () => {
           ({
             fields: {
               projectName,
+              projectTagline,
               projectLogo: {
                 fields: {
                   file: { url }
@@ -51,6 +52,7 @@ const Homepage = () => {
               key={id}
               projectName={projectName}
               projectImage={url}
+              projectTagline={projectTagline}
               entryId={id}
             />
           )
