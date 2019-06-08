@@ -22,7 +22,7 @@ const encode = data => {
 class ContactForm extends Component<Props, State> {
   // TODO: fill in a defaultProps email?
   static defaultProps = {
-    addressTo: "contact@gmail.com"
+    addressTo: "andrw.huang@gmail.com"
   }
   state = {
     formControls: {
@@ -50,11 +50,13 @@ class ContactForm extends Component<Props, State> {
       // formControls: { email, message }
       formControls
     } = this.state
-    // console.log(email, message)
+    const { addressTo } = this.props
+    let body = { ...formControls, addressTo }
+    // console.log(body)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...formControls })
+      body: encode({ "form-name": "contact", body })
     })
       .then(() => alert("Success!"))
       .catch(error => alert(error))
