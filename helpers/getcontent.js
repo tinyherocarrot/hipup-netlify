@@ -9,27 +9,25 @@ const client = contentful.createClient({
   accessToken: process.env.CTF_CDA_TOKEN
 })
 
-const types = [
-  "homepage",
-  "project",
-  "publications",
-  "publicationCategories",
-  "teamMember"
-]
-
 const getcontent = async function() {
-  // console.log("> Starting import...")
-  for (const type of types) {
-    // console.log(" > getting content for ", type)
-    const entries = await client.getEntries({
-      content_type: type,
-      include: 3
-    })
+ 
+  const entries = await client.getEntries()
+  const data = {}
+  const items = entries.items
 
-    const items = entries.items
+  items.forEach(item => {
+    let contentType = item.sys.contentType.sys.id
+    if (contentType in data) {
+      data[contentType].push(item)
+    } else {
+      data[contentType] = Array(item)
+    }
+  })
+
+  for (type in data) {
     fs.writeFileSync(
       path.join(__dirname, "..", "data", `${type}.json`),
-      JSON.stringify(items)
+      JSON.stringify(data[type])
     )
     // console.log("> Content gotten and written for", type)
   }

@@ -16,12 +16,16 @@ const Projects = () => {
 
       <div className="project-filters">
         <a
-          style={{ borderBottom: filter === "Current" ? "1px solid black" : "" }}
+          style={{
+            borderBottom: filter === "Current" ? "1px solid black" : ""
+          }}
           onClick={() => toggleFilter("Current")}>
           CURRENT
         </a>
         <a
-          style={{ borderBottom: filter === "Current" ? "" : "1px solid black" }}
+          style={{
+            borderBottom: filter === "Current" ? "" : "1px solid black"
+          }}
           onClick={() => toggleFilter("Past")}>
           PAST
         </a>
@@ -32,17 +36,26 @@ const Projects = () => {
           .filter(({ fields: { current } }) =>
             filter === "Current" ? current : !current
           )
-          .map(({
-            fields: {
-              projectName,
-              projectLogo: {
-                fields: { file: {url} }
-              }
-            },
-            sys: { id }
-          }) => (
-            <ProjectLink key={id} projectName={projectName} projectImage={url} entryId={id} />
-          ))}
+          .map(
+            ({
+              fields: {
+                projectName,
+                projectLogo: {
+                  fields: {
+                    file: { url }
+                  }
+                }
+              },
+              sys: { id }
+            }) => (
+              <ProjectLink
+                key={id}
+                projectName={projectName}
+                projectImage={url}
+                entryId={id}
+              />
+            )
+          )}
       </div>
 
       <style jsx>{`
@@ -58,8 +71,8 @@ const Projects = () => {
           font-weight: lighter;
           text-align: center;
           margin: 3rem auto;
-          font-family: 'Playfair Display', serif;
-          line-height: 1.2rem
+          font-family: "Playfair Display", serif;
+          line-height: 1.2rem;
         }
         .project-grid {
           display: grid;
