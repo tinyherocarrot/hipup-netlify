@@ -3,7 +3,8 @@ import Link from "next/link"
 
 const navLinks = [
   { name: "Projects", path: "/projects" },
-  { name: "Publications", path: "/publications" }
+  { name: "Publications", path: "/publications" },
+  { name: "Community", path: "/community" }
 ]
 
 const NavLinks = () => {

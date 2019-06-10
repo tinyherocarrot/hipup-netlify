@@ -12,7 +12,6 @@ const Button = ({ children, ...otherProps }) => {
           border-radius: 7px;
           font-size: 1.2rem;
           transition: transform 0.2s;
-          max-width: 100%
         }
         button:hover {
           cursor: pointer;

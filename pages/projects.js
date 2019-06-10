@@ -114,9 +114,9 @@ const PastProjects = () => (
       })
       .map(
         ({
-          fields: { projectName, startDate, endDate, description, grantDetails }
+          fields: { projectName, startDate, endDate, description, grantDetails }, sys: { id }
         }) => (
-          <article>
+          <article key={id}>
             <small>
               {startDate.slice(0, 4)} - {endDate.slice(0, 4)}
             </small>

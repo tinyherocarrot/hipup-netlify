@@ -22,7 +22,8 @@ module.exports = {
     const pathMap = {
       "/": { page: "/" },
       "/projects": { page: "/projects" },
-      "/publications": { page: "/publications" }
+      "/publications": { page: "/publications" },
+      "/community": { page: "/community" },
     }
 
     // now get the dynamic stuff:

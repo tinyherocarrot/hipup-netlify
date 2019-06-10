@@ -20,14 +20,14 @@ const encode = data => {
 }
 
 class ContactForm extends Component<Props, State> {
-  // TODO: fill in a defaultProps email?
   static defaultProps = {
     addressTo: "andrw.huang@gmail.com"
   }
+
   state = {
     formControls: {
       email: "",
-      message: "Yes let's connect! Please reach out to me at email@address.com",
+      message: "Yes let's connect! I'm curious about where I can apply :)",
       addressTo: this.props.addressTo
     }
   }
