@@ -25,8 +25,12 @@ const Homepage = () => {
         </div>
         <img
           className="homepage-hero-img"
-          src="https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image"
-          alt=""
+          src={
+            homeContent[0].fields.bannerPhoto
+              ? homeContent[0].fields.bannerPhoto.fields.file.url
+              : "https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image"
+          }
+          alt="HIPUP-banner-photo"
         />
       </section>
       <h1>What We Do</h1>
@@ -60,7 +64,11 @@ const Homepage = () => {
       </section>
       <section className="group-photo-container">
         <img
-          src="https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic"
+          src={
+            homeContent[0].fields.teamPhoto
+              ? homeContent[0].fields.teamPhoto.fields.file.url
+              : "https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic"
+          }
           alt="hipup-group-photo"
         />
       </section>

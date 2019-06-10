@@ -6,9 +6,6 @@ import ProjectLink from "../components/ProjectLink"
 import currentProjects from "../data/currentProjects.json"
 import pastProjects from "../data/pastProjects.json"
 
-// TODO: reformat PAST PROJECT dates
-// TODO: make PAST PROJECT desc lighter font
-
 const Projects = () => {
   const [filter, toggleFilter] = useState("Current")
 

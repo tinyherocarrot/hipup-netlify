@@ -6,7 +6,8 @@ const projectPaths = projects.map(p => ({
   id: p.sys.id
 }))
 
-// TODO: dynamically generate pathMap
+// TODO: dynamically generate pathMap XML
+
 module.exports = {
   webpack: cfg => {
     cfg.module.rules.push({
