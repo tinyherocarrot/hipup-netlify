@@ -11,7 +11,7 @@ const ProjectLink = ({
     <Link
       prefetch
       href={`/project?id=${entryId}`}
-      as={`projects/${projectName}`}>
+      as={`/${projectName}`}>
       <div className="project-card">
         <div className="project-img" />
         <h2>{projectName}</h2>
