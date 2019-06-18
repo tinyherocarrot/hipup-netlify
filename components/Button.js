@@ -10,13 +10,13 @@ const Button = ({ children, ...otherProps }) => {
           background-color: white;
           border: 2px solid black;
           border-radius: 7px;
-          font-size: 1.2rem;
+          font-size: 1rem;
           transition: transform 0.2s;
         }
         button:hover {
           cursor: pointer;
           text-decoration: underline;
-          transform: scale(1.1)
+          transform: scale(1.05)
         }
       `}</style>
     </button>

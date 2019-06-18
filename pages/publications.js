@@ -86,9 +86,18 @@ const Categories = ({ currentCategory, changeCategory }) => (
         opacity: 0.6;
       }
       .categories {
-        text-align: right;
-        padding-right: 2rem;
-        overflow: scroll;
+        height: 100%;
+    width: 100%;
+        overflow: hidden;
+      }
+      ul {
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        overflow-y: scroll;
+    padding: 0rem 3rem ; 
+    box-sizing: content-box;
+
       }
     `}</style>
   </aside>

@@ -26,19 +26,23 @@ const NavLinks = () => {
         <>
           {navLinks.map(link => (
             <Link href={link.path} key={link.name}>
-              <a>{link.name}</a>
+              <a className="page-link">{link.name}</a>
             </Link>
           ))}
         </>
       ) : (
         <>
-          <button onClick={handleMenuToggle}>MENU</button>
+          
+          <button onClick={handleMenuToggle}>
+          <div className="menu__bar"/>
+          <div className="menu__bar"/>
+          </button>
           <MobileNavMenu menuOpen={menuOpen} handleClose={handleMenuToggle} />
         </>
       )}
 
       <style jsx>{`
-        a {
+        .page-link {
           color: black;
           padding: 0.6rem;
           margin-left: 2rem;
@@ -47,9 +51,23 @@ const NavLinks = () => {
           transition: border-bottom 0.5s, color 0.4s;
         }
 
-        a:hover {
+        .page-link:hover {
           border-bottom: 2px solid rgba(75, 143, 204, 1);
           color: rgba(75, 143, 204, 1);
+        }
+
+        button { 
+          border: none;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          background: none;
+        }
+        .menu__bar {
+          height: 0.2rem;
+          width: 1.2rem;
+          background-color: black;
+          margin: 0.1rem
         }
       `}</style>
     </div>
@@ -85,7 +103,7 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
       <div className="mobile-navlinks">
         {navLinks.map(link => (
           <Link href={link.path} key={link.name}>
-            <a>{link.name}</a>
+            <a onClick={handleClose}>{link.name}</a>
           </Link>
         ))}
       </div>
