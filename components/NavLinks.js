@@ -114,6 +114,7 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
             background-color: transparent;
             cursor: pointer;
             float: right;
+            font-size: 1.2rem;
           }
           .menu-close:hover {
             opacity: 0.6;

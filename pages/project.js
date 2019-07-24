@@ -49,7 +49,7 @@ const ProjectView = ({ project }) => {
                 </div>
               ))
             : ""}
-
+{/* 
           <div className="profile-card">
             <img
               className="profile-pic"
@@ -72,7 +72,7 @@ const ProjectView = ({ project }) => {
             <p>Eva Lee</p>
             <p>Health Educator</p>
             <p>I love to cook~</p>
-          </div>
+          </div> */}
         </div>
       </section>
       <section className="centered-margined">

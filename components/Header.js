@@ -30,12 +30,15 @@ const Header = () => (
           display: flex;
           align-items: center;
           justify-content: space-between;
+          border-bottom: solid 5px rgba(75, 143, 204, 0.8);
         }
 
         .logo-container {
           margin-left: 1rem;
           cursor: pointer;
+          margin-bottom: 1rem;
         }
+
         .hipup-logo {
           max-width: 140px;
           margin: 1rem 0 0 0 ;

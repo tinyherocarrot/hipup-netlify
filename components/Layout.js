@@ -11,8 +11,7 @@ const Layout = ({ children }) => (
         href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,500|Playfair+Display:700&display=swap"
         rel="stylesheet"
       />
-      {/* <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script> */}
-      {/* <style src="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"></style> */}
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </Head>
 
     <Header />
