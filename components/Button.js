@@ -2,10 +2,13 @@ import React from "react"
 
 const Button = ({ children, ...otherProps }) => {
   return (
-    <button {...otherProps}>
+    <a {...otherProps}>
       {children}
       <style jsx>{`
-        button {
+        a {
+          position: relative;
+          display: inline-block;
+          text-align: center;
           padding 0.6rem;
           background-color: white;
           border: 2px solid black;
@@ -13,16 +16,16 @@ const Button = ({ children, ...otherProps }) => {
           font-size: 1rem;
           transition: transform 0.2s;
         }
-        button:hover {
+        a:hover {
           cursor: pointer;
           text-decoration: underline;
           transform: scale(1.05)
         }
-        button:active {
+        a:focus {
           outline: none;
         }
       `}</style>
-    </button>
+    </a>
   )
 }
 

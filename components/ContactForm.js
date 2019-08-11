@@ -92,7 +92,7 @@ class ContactForm extends Component<Props, State> {
           name="email"
           placeholder="email address"
           value={email}
-          className="input__email"
+          className="input__email form-item"
           onChange={this.changeHandler}
         />
         <textarea
@@ -100,21 +100,28 @@ class ContactForm extends Component<Props, State> {
           name="message"
           value={message}
           onChange={this.changeHandler}
+          className="form-item"
         />
-        <Button onClick={this.submitHandler}> Submit </Button>
+        <Button onClick={this.submitHandler} className="form-item">
+          Submit
+        </Button>
 
         <style jsx>
           {`
             .form-container {
               display: flex;
               flex-direction: column;
-              gap: 1em;
               max-width: 400px;
               margin: 0 auto;
+              padding: 1rem;
+            }
+            .form-item {
+              margin: 1rem;
             }
             input,
             textarea {
-              border: 2px solid black;
+              border: 0;
+              border-bottom: 2px solid black;
               padding: 0.5rem;
               font-family: inherit;
               font-size: 0.8rem;
@@ -124,7 +131,9 @@ class ContactForm extends Component<Props, State> {
             }
             input:focus,
             textarea:focus {
-              border: 2px solid black;
+              border: 0;
+              border-bottom: 2px solid black;
+              outline: none;
             }
           `}
         </style>

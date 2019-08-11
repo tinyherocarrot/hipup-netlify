@@ -1,5 +1,5 @@
-import React from "react"
-import homeContent from "../data/homepage.json"
+import React from "react";
+import homeContent from "../data/homepage.json";
 
 const Footer = () => {
   return (
@@ -22,7 +22,12 @@ const Footer = () => {
       <style jsx>
         {`
           .footer-container {
-            background-color: rgba(75, 143, 204, 0.8);
+            background: rgb(255, 255, 255);
+            background: linear-gradient(
+              129deg,
+              rgba(255, 255, 255, 1) 60%,
+              rgba(113, 165, 214, 1) 100%
+            );
             position: absolute;
             bottom: 0;
             padding: 2rem;
@@ -62,7 +67,7 @@ const Footer = () => {
         
       `}</style>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
