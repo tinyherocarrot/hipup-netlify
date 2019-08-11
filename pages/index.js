@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import Link from "next/link"
 import Head from "next/head"
+// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import Button from "../components/Button"
 import ProjectLink from "../components/ProjectLink"
@@ -35,7 +37,7 @@ const Homepage = () => {
       </section>
       <h1>What We Do</h1>
       <section className="centered-margined font-light">
-        <p>{homeContent[0].fields.missionStatement}</p>
+        {documentToReactComponents(homeContent[0].fields.missionStatement)}
       </section>
       <h1>Get Involved</h1>
       <section className="cards">

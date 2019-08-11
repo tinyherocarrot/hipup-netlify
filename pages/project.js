@@ -1,5 +1,6 @@
 import Head from "next/head"
 import dynamic from "next/dynamic"
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import ContactForm from "../components/ContactForm.js"
 import allProjects from "../data/currentProjects.json"
@@ -21,7 +22,7 @@ const ProjectView = ({ project }) => {
       </section>
       <h1>{project.fields.projectName.toUpperCase()}</h1>
       <section className="centered-margined">
-        <p>{project.fields.projectDescription}</p>
+        {documentToReactComponents(project.fields.projectDescription)}
       </section>
       <section className="centered-margined">
         <h2>Eligibility</h2>

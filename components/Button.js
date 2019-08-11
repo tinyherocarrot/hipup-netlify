@@ -18,6 +18,9 @@ const Button = ({ children, ...otherProps }) => {
           text-decoration: underline;
           transform: scale(1.05)
         }
+        button:active {
+          outline: none;
+        }
       `}</style>
     </button>
   )
