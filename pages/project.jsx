@@ -1,16 +1,19 @@
-import Head from "next/head"
-import dynamic from "next/dynamic"
+import Head from 'next/head';
+import dynamic from 'next/dynamic';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-import ContactForm from "../components/ContactForm.js"
-import allProjects from "../data/currentProjects.json"
+import ContactForm from '../components/ContactForm';
+import allProjects from '../data/currentProjects.json';
 
 const ProjectView = ({ project }) => {
-  console.log(project)
+  console.log(project);
   return (
     <>
       <Head>
-        <title>HIPUP | {project.fields.projectName}</title>
+        <title>
+          HIPUP |
+          {project.fields.projectName}
+        </title>
       </Head>
       <section>
         <img
@@ -37,20 +40,20 @@ const ProjectView = ({ project }) => {
         <div className="team-grid">
           {project.fields.teamMembers
             ? project.fields.teamMembers.map(({ fields: p }, i) => (
-                <div key={i} className="profile-card">
-                  <img
-                    className="profile-pic"
+              <div key={i} className="profile-card">
+                <img
+                  className="profile-pic"
                     // src="https://via.placeholder.com/150.png?text=Cover+Image"
-                    src={p.profilePhoto.fields.file.url}
-                    alt=""
-                  />
-                  <p>{p.fullName}</p>
-                  <p>Health Educator</p>
-                  <p>{p.bio}</p>
-                </div>
-              ))
-            : ""}
-{/* 
+                  src={p.profilePhoto.fields.file.url}
+                  alt=""
+                />
+                <p>{p.fullName}</p>
+                <p>Health Educator</p>
+                <p>{p.bio}</p>
+              </div>
+            ))
+            : ''}
+          {/*
           <div className="profile-card">
             <img
               className="profile-pic"
@@ -81,7 +84,8 @@ const ProjectView = ({ project }) => {
         <ContactForm />
       </section>
 
-      <style jsx>{`
+      <style jsx>
+        {`
         h2 {
           text-align: left;
         }
@@ -124,14 +128,15 @@ const ProjectView = ({ project }) => {
           width: 8rem;
           margin: 0 auto;
         }
-      `}</style>
+      `}
+      </style>
     </>
-  )
-}
+  );
+};
 
 ProjectView.getInitialProps = async ({ query: { id } }) => {
-  const project = allProjects.find(x => x.sys.id === id)
-  return { project }
-}
+  const project = allProjects.find((x) => x.sys.id === id);
+  return { project };
+};
 
-export default ProjectView
+export default ProjectView;

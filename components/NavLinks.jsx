@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from "react"
-import Link from "next/link"
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
+// TODO: move this into a config file
 const navLinks = [
-  { name: "Projects", path: "/projects" },
-  { name: "Publications", path: "/publications" },
-  { name: "Community", path: "/community" }
-]
+  { name: 'Projects', path: '/projects' },
+  { name: 'Publications', path: '/publications' },
+  { name: 'Community', path: '/community' },
+];
 
 const NavLinks = () => {
-  const [menuOpen, toggleMenuOpen] = useState(false)
-  const [width, setWidth] = useState(window.innerWidth)
+  const [menuOpen, toggleMenuOpen] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth)
-    window.addEventListener("resize", handleResize)
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  })
-  const handleMenuToggle = () => toggleMenuOpen(!menuOpen)
+      window.removeEventListener('resize', handleResize);
+    };
+  });
+  const handleMenuToggle = () => toggleMenuOpen(!menuOpen);
 
   return (
     <div className="nav-links">
       {width > 768 ? (
         <>
-          {navLinks.map(link => (
+          {navLinks.map((link) => (
             <Link href={link.path} key={link.name}>
               <a className="page-link">{link.name}</a>
             </Link>
@@ -32,16 +33,17 @@ const NavLinks = () => {
         </>
       ) : (
         <>
-          
+
           <button onClick={handleMenuToggle}>
-          <div className="menu__bar"/>
-          <div className="menu__bar"/>
+            <div className="menu__bar" />
+            <div className="menu__bar" />
           </button>
           <MobileNavMenu menuOpen={menuOpen} handleClose={handleMenuToggle} />
         </>
       )}
 
-      <style jsx>{`
+      <style jsx>
+        {`
         .page-link {
           color: black;
           padding: 0.6rem;
@@ -69,26 +71,28 @@ const NavLinks = () => {
           background-color: black;
           margin: 0.1rem
         }
-      `}</style>
-    </div>
-  )
-}
+      `}
 
-export default NavLinks
+      </style>
+    </div>
+  );
+};
+
+export default NavLinks;
 
 const MobileNavMenu = ({ menuOpen, handleClose }) => {
   // FIXME:
   useEffect(() => {
-    const onEscPress = e => {
+    const onEscPress = (e) => {
       // console.log("CUKDE", e)
-      if (e.key == "Escape") handleClose()
-    }
-    window.document.addEventListener("onkeypress", e => onEscPress(e))
+      if (e.key == 'Escape') handleClose();
+    };
+    window.document.addEventListener('onkeypress', (e) => onEscPress(e));
     // console.log(window.document.onkeypress)
     return () => {
-      window.document.removeEventListener("onkeypress", onEscPress)
-    }
-  })
+      window.document.removeEventListener('onkeypress', onEscPress);
+    };
+  });
   // FIXME: link clicks should close menu if already on specified page
   return (
     <div className="mobile-nav">
@@ -101,7 +105,7 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
         </Link>
       </div>
       <div className="mobile-navlinks">
-        {navLinks.map(link => (
+        {navLinks.map((link) => (
           <Link href={link.path} key={link.name}>
             <a onClick={handleClose}>{link.name}</a>
           </Link>
@@ -120,7 +124,7 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
             opacity: 0.6;
           }
           .mobile-nav {
-            display: ${menuOpen ? "flex" : "none"};
+            display: ${menuOpen ? 'flex' : 'none'};
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -143,5 +147,5 @@ const MobileNavMenu = ({ menuOpen, handleClose }) => {
         `}
       </style>
     </div>
-  )
-}
+  );
+};

@@ -7,15 +7,15 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+    "/PublicationsPage": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
     "/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/community": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],

@@ -1,13 +1,13 @@
-import React, { useState } from "react"
-import Head from "next/head"
+import React, { useState } from 'react';
+import Head from 'next/head';
 
-import ProjectLink from "../components/ProjectLink"
+import ProjectLink from '../components/ProjectLink';
 
-import currentProjects from "../data/currentProjects.json"
-import pastProjects from "../data/pastProjects.json"
+import currentProjects from '../data/currentProjects.json';
+import pastProjects from '../data/pastProjects.json';
 
 const Projects = () => {
-  const [filter, toggleFilter] = useState("Current")
+  const [filter, toggleFilter] = useState('Current');
 
   return (
     <>
@@ -18,19 +18,21 @@ const Projects = () => {
       <div className="project-filters">
         <a
           className="link--filter-current"
-          onClick={() => toggleFilter("Current")}>
+          onClick={() => toggleFilter('Current')}
+        >
           CURRENT
         </a>
-        <a className="link--filter-past" onClick={() => toggleFilter("Past")}>
+        <a className="link--filter-past" onClick={() => toggleFilter('Past')}>
           PAST
         </a>
       </div>
 
       <div className="project-grid centered-margined">
-        {filter === "Current" ? <CurrentProjects /> : <PastProjects />}
+        {filter === 'Current' ? <CurrentProjects /> : <PastProjects />}
       </div>
 
-      <style jsx>{`
+      <style jsx>
+        {`
         a {
           cursor: pointer;
           padding-bottom: 0.2rem;
@@ -39,10 +41,10 @@ const Projects = () => {
           opacity: 0.6
         }
         .link--filter-current {
-          border-bottom: ${filter === "Current" ? "1px solid black" : ""};
+          border-bottom: ${filter === 'Current' ? '1px solid black' : ''};
         }
         .link--filter-past {
-          border-bottom: ${filter === "Current" ? "" : "1px solid black"};
+          border-bottom: ${filter === 'Current' ? '' : '1px solid black'};
         }
         .project-filters {
           display: flex;
@@ -61,12 +63,13 @@ const Projects = () => {
           grid-gap: 30px;
           justify-items: center;
         }
-      `}</style>
+      `}
+      </style>
     </>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;
 
 const CurrentProjects = () => (
   <>
@@ -77,11 +80,11 @@ const CurrentProjects = () => (
           projectTagline,
           projectLogo: {
             fields: {
-              file: { url }
-            }
-          }
+              file: { url },
+            },
+          },
         },
-        sys: { id }
+        sys: { id },
       }) => (
         <ProjectLink
           key={id}
@@ -90,32 +93,36 @@ const CurrentProjects = () => (
           projectTagline={projectTagline}
           entryId={id}
         />
-      )
+      ),
     )}
   </>
-)
+);
 
 const PastProjects = () => (
   <>
     {pastProjects
       .sort((curr, next) => {
-        let currDate = new Date(curr.fields.endDate)
-        let nextDate = new Date(next.fields.endDate)
+        const currDate = new Date(curr.fields.endDate);
+        const nextDate = new Date(next.fields.endDate);
         if (currDate < nextDate) {
-          return -1
-        } else if (currDate > nextDate) {
-          return 1
-        } else {
-          return 0
+          return -1;
+        } if (currDate > nextDate) {
+          return 1;
         }
+        return 0;
       })
       .map(
         ({
-          fields: { projectName, startDate, endDate, description, grantDetails }, sys: { id }
+          fields: {
+            projectName, startDate, endDate, description, grantDetails,
+          }, sys: { id },
         }) => (
           <article key={id}>
             <small>
-              {startDate.slice(0, 4)} - {endDate.slice(0, 4)}
+              {startDate.slice(0, 4)}
+              {' '}
+              -
+              {endDate.slice(0, 4)}
             </small>
             <h2>{projectName}</h2>
             <p className="font-light">{description}</p>
@@ -123,7 +130,7 @@ const PastProjects = () => (
               <i>{grantDetails}</i>
             </small>
           </article>
-        )
+        ),
       )}
   </>
-)
+);

@@ -1,19 +1,18 @@
-import React, { Component } from "react"
-import Link from "next/link"
-import Head from "next/head"
-// import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import React from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-import Button from "../components/Button"
-import ProjectLink from "../components/ProjectLink"
+import Button from '../components/Button';
+import ProjectLink from '../components/ProjectLink';
 
-import allProjects from "../data/currentProjects.json"
-import homeContent from "../data/homepage.json"
+import allProjects from '../data/currentProjects.json';
+import homeContent from '../data/homepage.json';
 
-const Homepage = () => {
+const Homepage = () =>
   // console.log("projects", allProjects)
   // console.log("homeContent", homeContent)
-  return (
+  (
     <>
       <Head>
         <title>HIPUP</title>
@@ -21,7 +20,7 @@ const Homepage = () => {
       <section className="homepage-hero">
         <div className="homepage-hero-overlay">
           <h1>Health Intervention Projects for Underserved Populations</h1>
-          <Link href={`/projects`}>
+          <Link href="/projects">
             <Button>Check out our work</Button>
           </Link>
         </div>
@@ -30,7 +29,7 @@ const Homepage = () => {
           src={
             homeContent[0].fields.bannerPhoto
               ? homeContent[0].fields.bannerPhoto.fields.file.url
-              : "https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image"
+              : 'https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image'
           }
           alt="HIPUP-banner-photo"
         />
@@ -48,11 +47,11 @@ const Homepage = () => {
               projectTagline,
               projectLogo: {
                 fields: {
-                  file: { url }
-                }
-              }
+                  file: { url },
+                },
+              },
             },
-            sys: { id }
+            sys: { id },
           }) => (
             <ProjectLink
               key={id}
@@ -61,7 +60,7 @@ const Homepage = () => {
               projectTagline={projectTagline}
               entryId={id}
             />
-          )
+          ),
         )}
       </section>
       <section className="group-photo-container">
@@ -69,13 +68,14 @@ const Homepage = () => {
           src={
             homeContent[0].fields.teamPhoto
               ? homeContent[0].fields.teamPhoto.fields.file.url
-              : "https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic"
+              : 'https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic'
           }
           alt="hipup-group-photo"
         />
       </section>
 
-      <style jsx>{`
+      <style jsx>
+        {`
         img {
           max-width: 100%;
         }
@@ -111,9 +111,10 @@ const Homepage = () => {
         }
         h1 {
         }
-      `}</style>
+      `}
+      </style>
     </>
-  )
-}
+  );
 
-export default Homepage
+
+export default Homepage;

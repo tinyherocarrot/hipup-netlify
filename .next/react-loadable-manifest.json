@@ -1,8 +1,8 @@
 {
   "./NavLinks": [
     {
-      "id": "./components/NavLinks.js",
-      "name": "./components/NavLinks.js",
+      "id": "./components/NavLinks.jsx",
+      "name": "./components/NavLinks.jsx",
       "file": "static/chunks/0.js",
       "publicPath": "static/chunks/0.js"
     }
