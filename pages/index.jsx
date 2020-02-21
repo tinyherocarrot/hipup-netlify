@@ -9,73 +9,70 @@ import ProjectLink from '../components/ProjectLink';
 import allProjects from '../data/currentProjects.json';
 import homeContent from '../data/homepage.json';
 
-const Homepage = () =>
-  // console.log("projects", allProjects)
-  // console.log("homeContent", homeContent)
-  (
-    <>
-      <Head>
-        <title>HIPUP</title>
-      </Head>
-      <section className="homepage-hero">
-        <div className="homepage-hero-overlay">
-          <h1>Health Intervention Projects for Underserved Populations</h1>
-          <Link href="/projects">
-            <Button>Check out our work</Button>
-          </Link>
-        </div>
-        <img
-          className="homepage-hero-img"
-          src={
+const Homepage = () => (
+  <>
+    <Head>
+      <title>HIPUP</title>
+    </Head>
+    <section className="homepage-hero">
+      <div className="homepage-hero-overlay">
+        <h1>Health Intervention Projects for Underserved Populations</h1>
+        <Link href="/projects">
+          <Button>Check out our work</Button>
+        </Link>
+      </div>
+      <img
+        className="homepage-hero-img"
+        src={
             homeContent[0].fields.bannerPhoto
               ? homeContent[0].fields.bannerPhoto.fields.file.url
               : 'https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image'
           }
-          alt="HIPUP-banner-photo"
-        />
-      </section>
-      <h1>What We Do</h1>
-      <section className="centered-margined font-light">
-        {documentToReactComponents(homeContent[0].fields.missionStatement)}
-      </section>
-      <h1>Get Involved</h1>
-      <section className="cards">
-        {allProjects.map(
-          ({
-            fields: {
-              projectName,
-              projectTagline,
-              projectLogo: {
-                fields: {
-                  file: { url },
-                },
+        alt="HIPUP"
+      />
+    </section>
+    <h1>What We Do</h1>
+    <section className="centered-margined font-light">
+      {documentToReactComponents(homeContent[0].fields.missionStatement)}
+    </section>
+    <h1>Get Involved</h1>
+    <section className="cards">
+      {allProjects.map(
+        ({
+          fields: {
+            projectName,
+            projectTagline,
+            projectLogo: {
+              fields: {
+                file: { url },
               },
             },
-            sys: { id },
-          }) => (
-            <ProjectLink
-              key={id}
-              projectName={projectName}
-              projectImage={url}
-              projectTagline={projectTagline}
-              entryId={id}
-            />
-          ),
-        )}
-      </section>
-      <section className="group-photo-container">
-        <img
-          src={
+          },
+          sys: { id },
+        }) => (
+          <ProjectLink
+            key={id}
+            projectName={projectName}
+            projectImage={url}
+            projectTagline={projectTagline}
+            entryId={id}
+          />
+        ),
+      )}
+    </section>
+    <section className="group-photo-container">
+      <img
+        src={
             homeContent[0].fields.teamPhoto
               ? homeContent[0].fields.teamPhoto.fields.file.url
               : 'https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic'
           }
-          alt="hipup-group-photo"
-        />
-      </section>
+        alt="HIPUP org staff"
+      />
+    </section>
 
-      <style jsx>
-        {`
+    <style jsx>
+      {`
         img {
           max-width: 100%;
         }
@@ -112,9 +109,9 @@ const Homepage = () =>
         h1 {
         }
       `}
-      </style>
-    </>
-  );
+    </style>
+  </>
+);
 
 
 export default Homepage;

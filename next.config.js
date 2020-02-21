@@ -1,17 +1,18 @@
 const { parsed: localEnv } = require('dotenv').config();
 const webpack = require('webpack');
-const projects = require('./data/currentProjects.json');
+const ALL_PROJECTS = require('./data/currentProjects.json');
 
-const projectPaths = projects.map((p) => ({
-  projectName: p.fields.projectName,
-  id: p.sys.id,
+const projectPaths = ALL_PROJECTS.map(({ fields: { projectName }, sys: { id } }) => ({
+  projectName,
+  id,
 }));
 
 // TODO: dynamically generate pathMap XML
 
 module.exports = {
   webpack: (cfg) => {
-    cfg.module.rules.push({
+    const res = { ...cfg };
+    res.module.rules.push({
       test: /\.md$/,
       use: 'frontmatter-markdown-loader',
     },
@@ -25,12 +26,13 @@ module.exports = {
         loader: 'babel-loader',
       },
     });
-    cfg.plugins.push(new webpack.EnvironmentPlugin(localEnv));
-    cfg.node = { fs: 'empty' };
-    return cfg;
+    res.plugins.push(new webpack.EnvironmentPlugin(localEnv));
+    res.node = { fs: 'empty' };
+    return res;
   },
 
-  exportPathMap: async (defaultPathMap) => {
+  // Create mapping of paths to (page) components to render
+  exportPathMap: async () => {
     const pathMap = {
       '/': { page: '/' },
       '/projects': { page: '/projects' },
@@ -38,11 +40,11 @@ module.exports = {
       '/community': { page: '/community' },
     };
 
-    // now get the dynamic stuff:
-    projectPaths.map((p) => {
-      pathMap[`/projects/${p.projectName}`] = {
+    // now, dynamically create parameterized paths
+    projectPaths.forEach(({ projectName, id }) => {
+      pathMap[`/projects/${projectName}`] = {
         page: '/project',
-        query: { id: p.id },
+        query: { id },
       };
     });
 

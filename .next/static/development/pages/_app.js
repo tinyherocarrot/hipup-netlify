@@ -7059,20 +7059,20 @@ module.exports = __webpack_require__(/*! ./dist/pages/_app */ "./node_modules/ne
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./":
-/*!*********************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js ***!
-  \*********************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.jsx!./":
+/*!**********************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.jsx ***!
+  \**********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
     (window.__NEXT_P=window.__NEXT_P||[]).push(["/_app", function() {
-      var page = __webpack_require__(/*! private-next-pages/_app.js */ "./pages/_app.js")
+      var page = __webpack_require__(/*! private-next-pages/_app.jsx */ "./pages/_app.jsx")
       if(true) {
-        module.hot.accept(/*! private-next-pages/_app.js */ "./pages/_app.js", function() {
+        module.hot.accept(/*! private-next-pages/_app.jsx */ "./pages/_app.jsx", function() {
           if(!next.router.components["/_app"]) return
-          var updatedPage = __webpack_require__(/*! private-next-pages/_app.js */ "./pages/_app.js")
+          var updatedPage = __webpack_require__(/*! private-next-pages/_app.jsx */ "./pages/_app.jsx")
           next.router.update("/_app", updatedPage.default || updatedPage)
         })
       }
@@ -8560,6 +8560,70 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
+/***/ "./node_modules/next/node_modules/webpack/buildin/global.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ "./node_modules/next/node_modules/webpack/buildin/module.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/module.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
   !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_7aff549c98b978433226 ***!
@@ -9760,7 +9824,7 @@ module.exports = exports['default'];
 
 }(this));
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module), __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../next/node_modules/webpack/buildin/module.js */ "./node_modules/next/node_modules/webpack/buildin/module.js")(module), __webpack_require__(/*! ./../next/node_modules/webpack/buildin/global.js */ "./node_modules/next/node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -12540,54 +12604,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/webpack/buildin/global.js":
-/*!******************************************************************************************************!*\
-  !*** delegated ./node_modules/webpack/buildin/global.js from dll-reference dll_7aff549c98b978433226 ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = (__webpack_require__(/*! dll-reference dll_7aff549c98b978433226 */ "dll-reference dll_7aff549c98b978433226"))("./node_modules/webpack/buildin/global.js");
-
-/***/ }),
-
-/***/ "./node_modules/webpack/buildin/module.js":
-/*!***********************************!*\
-  !*** (webpack)/buildin/module.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if (!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if (!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-
-/***/ "./pages/_app.js":
-/*!***********************!*\
-  !*** ./pages/_app.js ***!
-  \***********************/
+/***/ "./pages/_app.jsx":
+/*!************************!*\
+  !*** ./pages/_app.jsx ***!
+  \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -12615,7 +12635,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/tinyherocarrot/projects/hipup-netlify/pages/_app.js";
+var _jsxFileName = "/Users/tinyherocarrot/projects/hipup-netlify/pages/_app.jsx";
+/* eslint-disable react/jsx-props-no-spreading */
+
 
 
 
@@ -12640,19 +12662,19 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_9__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 22
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 23
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 24
         },
         __self: this
       }))));
@@ -12721,5 +12743,5 @@ module.exports = dll_7aff549c98b978433226;
 
 /***/ })
 
-},[["./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.js!./","static/runtime/webpack.js"]]]);
+},[["./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F_app&absolutePagePath=private-next-pages%2F_app.jsx!./","static/runtime/webpack.js"]]]);
 //# sourceMappingURL=_app.js.map

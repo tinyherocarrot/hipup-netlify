@@ -1,4 +1,17 @@
 import React from 'react';
+import {
+  shape, number, string, arrayOf,
+} from 'prop-types';
+
+const propTypes = {
+  items: arrayOf(shape({
+    id: number.isRequired,
+    publicationTitle: string.isRequired,
+    description: string,
+    authors: arrayOf(string),
+    url: string,
+  })).isRequired,
+};
 
 const PublicationsList = ({ items }) => (
   <div className="publications">
@@ -12,7 +25,7 @@ const PublicationsList = ({ items }) => (
           url,
         }) => (
           <article key={id}>
-            <a target="_blank" href={url}>
+            <a target="_blank" rel="noopener noreferrer" href={url}>
               <h2>{publicationTitle}</h2>
             </a>
             <p>{description}</p>
@@ -42,4 +55,5 @@ const PublicationsList = ({ items }) => (
   </div>
 );
 
+PublicationsList.propTypes = propTypes;
 export default PublicationsList;

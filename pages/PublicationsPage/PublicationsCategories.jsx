@@ -53,7 +53,12 @@ export default Categories;
 const CategoryLink = ({ categoryName, changeCategory, isSelected }) => (
   <>
     <li>
-      <span onClick={() => changeCategory(categoryName)}>
+      <span
+        role="button"
+        tabIndex={0}
+        onClick={() => changeCategory(categoryName)}
+        onKeyDown={() => changeCategory(categoryName)}
+      >
         {categoryName}
       </span>
     </li>

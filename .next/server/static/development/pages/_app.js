@@ -2262,10 +2262,10 @@ module.exports = __webpack_require__(/*! ./dist/style */ "./node_modules/styled-
 
 /***/ }),
 
-/***/ "./pages/_app.js":
-/*!***********************!*\
-  !*** ./pages/_app.js ***!
-  \***********************/
+/***/ "./pages/_app.jsx":
+/*!************************!*\
+  !*** ./pages/_app.jsx ***!
+  \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2293,7 +2293,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/Users/tinyherocarrot/projects/hipup-netlify/pages/_app.js";
+var _jsxFileName = "/Users/tinyherocarrot/projects/hipup-netlify/pages/_app.jsx";
+/* eslint-disable react/jsx-props-no-spreading */
+
 
 
 
@@ -2318,19 +2320,19 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_9__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 22
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 23
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 24
         },
         __self: this
       }))));
@@ -2389,13 +2391,13 @@ function (_App) {
 /***/ }),
 
 /***/ 0:
-/*!****************************************!*\
-  !*** multi private-next-pages/_app.js ***!
-  \****************************************/
+/*!*****************************************!*\
+  !*** multi private-next-pages/_app.jsx ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_app.js");
+module.exports = __webpack_require__(/*! private-next-pages/_app.jsx */"./pages/_app.jsx");
 
 
 /***/ }),

@@ -3,12 +3,12 @@ import Head from 'next/head';
 
 import PublicationsCategories from './PublicationsCategories';
 import PublicationsList from './PublicationsList';
-import allPublications from '../../data/publications.json';
-import allCategories from '../../data/publicationCategories.json';
+import ALL_PUBLICATIONS from '../../data/publications.json';
+import ALL_CATEGORIES from '../../data/publicationCategories.json';
 
 const PublicationsPage = () => {
   const [currentCategory, changeCategory] = useState('All Publications');
-  const filteredPublications = useMemo(() => allPublications
+  const filteredPublications = useMemo(() => ALL_PUBLICATIONS
     .filter(({ fields: { publicationCategory } }) => {
       const applicableCategories = publicationCategory.map(
         (c) => c.fields.categoryName,
@@ -40,7 +40,7 @@ const PublicationsPage = () => {
       }),
     ), [currentCategory]);
 
-  const categories = allCategories
+  const categories = ALL_CATEGORIES
     .sort(
       (
         { fields: { categoryName: cat1 } },
