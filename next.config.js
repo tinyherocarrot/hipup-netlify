@@ -1,4 +1,4 @@
-const { parsed: localEnv } = require('dotenv').config();
+const { parsed: localEnv } = require('dotenv');
 const webpack = require('webpack');
 const ALL_PROJECTS = require('./data/currentProjects.json');
 
@@ -7,7 +7,6 @@ const projectPaths = ALL_PROJECTS.map(({ fields: { projectName }, sys: { id } })
   id,
 }));
 
-// TODO: dynamically generate pathMap XML
 
 module.exports = {
   webpack: (cfg) => {
@@ -32,6 +31,7 @@ module.exports = {
   },
 
   // Create mapping of paths to (page) components to render
+  // TODO: replace this with getStaticPaths (https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation)
   exportPathMap: async () => {
     const pathMap = {
       '/': { page: '/' },

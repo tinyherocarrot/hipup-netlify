@@ -12,7 +12,7 @@ const propTypes = {
     url: string,
   })).isRequired,
 };
-
+// TODO: export const getStaticPaths
 const PublicationsList = ({ items }) => (
   <div className="publications">
     {items

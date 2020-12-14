@@ -1,8 +1,8 @@
-import React from "react"
-import Head from "next/head"
+import React from 'react';
+import Head from 'next/head';
 
-import Header from "./Header"
-import Footer from "./Footer"
+import Header from './Header';
+import Footer from './Footer';
 
 const Layout = ({ children }) => (
   <div>
@@ -11,20 +11,23 @@ const Layout = ({ children }) => (
         href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,500|Playfair+Display:700&display=swap"
         rel="stylesheet"
       />
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
 
     <Header />
     <div className="content">{children}</div>
     <Footer />
 
-    <style jsx>{`
+    <style jsx>
+      {`
       .content {
         box-sizing: border-box;
         max-width: 100%;
       }
-    `}</style>
-    <style jsx global>{`
+    `}
+    </style>
+    <style jsx global>
+      {`
       html {
         height: 100%;
         padding: 0px;
@@ -61,8 +64,9 @@ const Layout = ({ children }) => (
       .font-light {
         font-weight: lighter;
       }
-    `}</style>
+    `}
+    </style>
   </div>
-)
+);
 
-export default Layout
+export default Layout;

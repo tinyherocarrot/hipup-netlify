@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import ProjectLink from '../components/ProjectLink';
 
+// TODO: Fetch this data with getStaticProps
 import currentProjects from '../data/currentProjects.json';
 import pastProjects from '../data/pastProjects.json';
 

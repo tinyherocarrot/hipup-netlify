@@ -1,6 +1,7 @@
-import Head from "next/head"
+import React from 'react';
+import Head from 'next/head';
 
-import communityEvents from "../data/communityEvents.json"
+import communityEvents from '../data/communityEvents.json';
 
 // TODO: make description section render line breaks
 const Community = () => (
@@ -15,17 +16,19 @@ const Community = () => (
             <h2>{eventName}</h2>
             <p className="font-light">{description}</p>
           </section>
-        )
+        ),
       )}
     </div>
 
-    <style jsx>{`
+    <style jsx>
+      {`
       section {
         padding: 4rem 1rem;
         border-bottom: 1px solid grey;
       }
-    `}</style>
+    `}
+    </style>
   </>
-)
+);
 
-export default Community
+export default Community;

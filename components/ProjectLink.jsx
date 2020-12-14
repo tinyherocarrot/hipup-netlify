@@ -1,17 +1,17 @@
-import React from "react"
-import Link from "next/link"
+import React from 'react';
+import Link from 'next/link';
 
 const ProjectLink = ({
   projectName,
   projectImage,
   projectTagline,
-  entryId
+  entryId,
 }) => (
   <>
     <Link
-      prefetch
       href={`/project?id=${entryId}`}
-      as={`projects/${projectName}`}>
+      as={`projects/${projectName}`}
+    >
       <div className="project-card">
         <div className="project-img" />
         <h2>{projectName}</h2>
@@ -19,7 +19,8 @@ const ProjectLink = ({
       </div>
     </Link>
 
-    <style jsx>{`
+    <style jsx>
+      {`
       a {
         color: black;
         margin-bottom: 1rem;
@@ -53,8 +54,9 @@ const ProjectLink = ({
         height: 150px;
         width: 300px;
       }
-    `}</style>
+    `}
+    </style>
   </>
-)
+);
 
-export default ProjectLink
+export default ProjectLink;

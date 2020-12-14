@@ -17,7 +17,7 @@ const PublicationsPage = () => {
         ? applicableCategories.includes(currentCategory)
         : true;
     })
-    .sort()
+    .sort() // default alpha sort publications
     .map(
       ({
         sys: { id },
