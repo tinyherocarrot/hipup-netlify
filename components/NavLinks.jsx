@@ -1,16 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import {
+  useMenuState,
+  Menu,
+  MenuItem,
+  MenuButton,
+  MenuSeparator,
+  Button,
+} from 'reakit';
 
-// TODO: move this into a config file
-const navLinks = [
-  { name: 'Projects', path: '/projects' },
-  { name: 'Publications', path: '/publications' },
-  { name: 'Community', path: '/community' },
-];
+import { getCurrentProjects } from '../lib/api';
 
-const NavLinks = () => {
+export async function getStaticProps({ preview = false }) {
+  const projects = (await getCurrentProjects(preview)) ?? [];
+  return {
+    props: { preview, projects },
+  };
+}
+
+const NavLinks = ({ projects }) => {
   const [menuOpen, toggleMenuOpen] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
+  const projectMenu = useMenuState();
+
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
@@ -24,16 +36,32 @@ const NavLinks = () => {
   return (
     <div className="nav-links">
       {width > 768 ? (
-        <>
-          {navLinks.map((link) => (
-            <Link href={link.path} key={link.name}>
-              <a className="page-link">{link.name}</a>
+        <nav>
+          <Link href="/about" aria-label="About" passHref>
+            <a className="page-link">About</a>
+          </Link>
+          <MenuButton as="a" className="page-link" {...projectMenu}>
+            Projects
+          </MenuButton>
+          <Menu {...projectMenu} aria-label="Projects">
+            <MenuItem as="a" href="#" {...projectMenu}>Settings</MenuItem>
+            <MenuItem as="a" href="#" {...projectMenu}>
+              Extensions
+            </MenuItem>
+            <MenuSeparator {...projectMenu} />
+            <MenuItem as="a" href="#" {...projectMenu}>Past Projects</MenuItem>
+          </Menu>
+          <Link href="/publications" aria-label="Publications" passHref>
+            <a className="page-link">Publications</a>
+          </Link>
+          <Button>
+            <Link href="/community" aria-label="Get Involved" passHref>
+              <a className="page-link">Get Involved</a>
             </Link>
-          ))}
-        </>
+          </Button>
+        </nav>
       ) : (
         <>
-
           <button onClick={handleMenuToggle}>
             <div className="menu__bar" />
             <div className="menu__bar" />

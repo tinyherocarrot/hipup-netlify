@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-import ContactForm from '../components/ContactForm';
+import ContactForm from '../components/ContactForm.jsx';
 import allProjects from '../data/currentProjects.json';
 
 const ProjectView = ({ project }) => {
@@ -43,13 +43,13 @@ const ProjectView = ({ project }) => {
               <div key={i} className="profile-card">
                 <img
                   className="profile-pic"
-                    // src="https://via.placeholder.com/150.png?text=Cover+Image"
-                  src={p.profilePhoto.fields.file.url}
+                  // src="https://via.placeholder.com/150.png?text=Cover+Image"
+                  src={p?.profilePhoto?.fields.file.url}
                   alt=""
                 />
-                <p>{p.fullName}</p>
+                <p>{p?.fullName}</p>
                 <p>Health Educator</p>
-                <p>{p.bio}</p>
+                <p>{p?.bio}</p>
               </div>
             ))
             : ''}

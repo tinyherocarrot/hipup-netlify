@@ -1,12 +1,12 @@
-import React from "react"
-import Link from "next/link"
-import dynamic from "next/dynamic"
+import React from 'react';
+import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
-import homeContent from "../data/homepage.json"
+import homeContent from '../data/homepage.json';
 
-const NavLinks = dynamic(() => import("./NavLinks"), {
-  ssr: false
-})
+const NavLinks = dynamic(() => import('./NavLinks'), {
+  ssr: false,
+});
 
 const Header = () => (
   <div className="header-container">
@@ -29,7 +29,7 @@ const Header = () => (
           height: 5rem;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: space-around;
           border-bottom: solid 5px rgba(75, 143, 204, 0.8);
         }
 
@@ -46,6 +46,6 @@ const Header = () => (
       `}
     </style>
   </div>
-)
+);
 
-export default Header
+export default Header;

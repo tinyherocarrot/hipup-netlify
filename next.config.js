@@ -7,7 +7,6 @@ const projectPaths = ALL_PROJECTS.map(({ fields: { projectName }, sys: { id } })
   id,
 }));
 
-
 module.exports = {
   webpack: (cfg) => {
     const res = { ...cfg };
@@ -25,7 +24,7 @@ module.exports = {
         loader: 'babel-loader',
       },
     });
-    res.plugins.push(new webpack.EnvironmentPlugin(localEnv));
+    // res.plugins.push(new webpack.EnvironmentPlugin(localEnv));
     res.node = { fs: 'empty' };
     return res;
   },

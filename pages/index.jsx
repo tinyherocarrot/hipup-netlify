@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import Button from '../components/Button';
 import ProjectLink from '../components/ProjectLink';
@@ -11,8 +10,8 @@ import homeContent from '../data/homepage.json';
 
 import { getCurrentProjects } from '../lib/api';
 
-const Homepage = ({ allPosts }) => {
-  console.log(allPosts);
+const Homepage = ({ projects }) => {
+  console.log(projects);
   return (
     <>
       <Head>
@@ -21,9 +20,6 @@ const Homepage = ({ allPosts }) => {
       <section className="homepage-hero">
         <div className="homepage-hero-overlay">
           <h1>Health Intervention Projects for Underserved Populations</h1>
-          <Link href="/projects">
-            <Button>Check out our work</Button>
-          </Link>
         </div>
         <img
           className="homepage-hero-img"
@@ -35,10 +31,7 @@ const Homepage = ({ allPosts }) => {
           alt="HIPUP"
         />
       </section>
-      <h1>What We Do</h1>
-      <section className="centered-margined font-light">
-        {documentToReactComponents(homeContent[0].fields.missionStatement)}
-      </section>
+
       <h1>Get Involved</h1>
       <section className="cards">
         {allProjects.map(
@@ -64,16 +57,7 @@ const Homepage = ({ allPosts }) => {
           ),
         )}
       </section>
-      <section className="group-photo-container">
-        <img
-          src={
-            homeContent[0].fields.teamPhoto
-              ? homeContent[0].fields.teamPhoto.fields.file.url
-              : 'https://via.placeholder.com/400x150.png?text=HIPUP+Group+Pic'
-          }
-          alt="HIPUP org staff"
-        />
-      </section>
+
 
       <style jsx>
         {`
@@ -85,6 +69,7 @@ const Homepage = ({ allPosts }) => {
           display: flex;
           align-items: center;
           justify-content: center;
+          min-height: 200px;
         }
         .homepage-hero-img {
           width: 100vw;
@@ -119,9 +104,9 @@ const Homepage = ({ allPosts }) => {
 };
 
 export async function getStaticProps({ preview = false }) {
-  const allPosts = (await getCurrentProjects(preview)) ?? [];
+  const projects = (await getCurrentProjects(preview)) ?? [];
   return {
-    props: { preview, allPosts },
+    props: { preview, projects },
   };
 }
 
