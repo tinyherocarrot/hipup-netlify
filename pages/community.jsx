@@ -1,17 +1,17 @@
 import React from 'react';
 import Head from 'next/head';
 
-import communityEvents from '../data/communityEvents.json';
+import { getCommunityEvents } from '../lib/api';
 
 // TODO: make description section render line breaks
-const Community = () => (
+const Community = ({ events }) => (
   <>
     <Head>
       <title>HIPUP | Community</title>
     </Head>
     <div className="centered-margined">
-      {communityEvents.map(
-        ({ sys: { id }, fields: { eventName, description } }) => (
+      {events.map(
+        ({ sys: { id }, eventName, description }) => (
           <section key={id}>
             <h2>{eventName}</h2>
             <p className="font-light">{description}</p>
@@ -30,5 +30,12 @@ const Community = () => (
     </style>
   </>
 );
+
+export async function getStaticProps({ preview = false }) {
+  const events = await getCommunityEvents(preview) || [];
+  return {
+    props: { events },
+  };
+}
 
 export default Community;

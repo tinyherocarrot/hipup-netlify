@@ -31,8 +31,6 @@ const Homepage = ({ projects }) => {
           alt="HIPUP"
         />
       </section>
-
-      <h1>Get Involved</h1>
       <section className="cards">
         {allProjects.map(
           ({
