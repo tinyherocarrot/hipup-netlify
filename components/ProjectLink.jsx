@@ -6,11 +6,11 @@ const ProjectLink = ({
   projectImage,
   projectTagline,
   entryId,
+  slug,
 }) => (
   <>
     <Link
-      href={`/project?id=${entryId}`}
-      as={`projects/${projectName}`}
+      href={`/projects/${slug}`}
     >
       <div className="project-card">
         <div className="project-img" />

@@ -3,7 +3,6 @@ import Head from 'next/head';
 
 import { getCommunityEvents } from '../lib/api';
 
-// TODO: make description section render line breaks
 const Community = ({ events }) => (
   <>
     <Head>

@@ -1,12 +1,3 @@
-const { parsed: localEnv } = require('dotenv');
-const webpack = require('webpack');
-const ALL_PROJECTS = require('./data/currentProjects.json');
-
-const projectPaths = ALL_PROJECTS.map(({ fields: { projectName }, sys: { id } }) => ({
-  projectName,
-  id,
-}));
-
 module.exports = {
   webpack: (cfg) => {
     const res = { ...cfg };
@@ -24,7 +15,6 @@ module.exports = {
         loader: 'babel-loader',
       },
     });
-    // res.plugins.push(new webpack.EnvironmentPlugin(localEnv));
     res.node = { fs: 'empty' };
     return res;
   },
@@ -34,18 +24,18 @@ module.exports = {
   exportPathMap: async () => {
     const pathMap = {
       '/': { page: '/' },
-      '/projects': { page: '/projects' },
-      '/publications': { page: '/PublicationsPage' },
+      '/past-projects': { page: '/pastProjects' },
+      '/publications': { page: '/publications' },
       '/community': { page: '/community' },
     };
 
     // now, dynamically create parameterized paths
-    projectPaths.forEach(({ projectName, id }) => {
-      pathMap[`/projects/${projectName}`] = {
-        page: '/project',
-        query: { id },
-      };
-    });
+    // projectPaths.forEach(({ projectName, id }) => {
+    //   pathMap[`/projects/${projectName}`] = {
+    //     page: '/project',
+    //     query: { id },
+    //   };
+    // });
 
     return pathMap;
   },

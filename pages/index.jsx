@@ -1,64 +1,52 @@
 import React from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
 
-import Button from '../components/Button';
 import ProjectLink from '../components/ProjectLink';
-
-import allProjects from '../data/currentProjects.json';
 import homeContent from '../data/homepage.json';
-
 import { getCurrentProjects } from '../lib/api';
 
-const Homepage = ({ projects }) => {
-  console.log(projects);
-  return (
-    <>
-      <Head>
-        <title>HIPUP</title>
-      </Head>
-      <section className="homepage-hero">
-        <div className="homepage-hero-overlay">
-          <h1>Health Intervention Projects for Underserved Populations</h1>
-        </div>
-        <img
-          className="homepage-hero-img"
-          src={
+const Homepage = ({ projects }) => (
+  <>
+    <Head>
+      <title>HIPUP</title>
+    </Head>
+    <section className="homepage-hero">
+      <div className="homepage-hero-overlay">
+        <h1>Health Intervention Projects for Underserved Populations</h1>
+      </div>
+      <img
+        className="homepage-hero-img"
+        src={
             homeContent[0].fields.bannerPhoto
               ? homeContent[0].fields.bannerPhoto.fields.file.url
               : 'https://via.placeholder.com/400x150.png?text=Homepage+Hero+Image'
           }
-          alt="HIPUP"
-        />
-      </section>
-      <section className="cards">
-        {allProjects.map(
-          ({
-            fields: {
-              projectName,
-              projectTagline,
-              projectLogo: {
-                fields: {
-                  file: { url },
-                },
-              },
-            },
-            sys: { id },
-          }) => (
-            <ProjectLink
-              key={id}
-              projectName={projectName}
-              projectImage={url}
-              projectTagline={projectTagline}
-              entryId={id}
-            />
-          ),
-        )}
-      </section>
+        alt="HIPUP"
+      />
+    </section>
+    <section className="cards">
+      {projects.map(
+        ({
+          projectName,
+          slug,
+          projectTagline,
+          projectLogo: { fileName },
+          sys: { id },
+        }) => (
+          <ProjectLink
+            key={id}
+            projectName={projectName}
+            projectImage={fileName}
+            projectTagline={projectTagline}
+            entryId={id}
+            slug={slug}
+          />
+        ),
+      )}
+    </section>
 
-
-      <style jsx>
-        {`
+    <style jsx>
+      {`
         img {
           max-width: 100%;
         }
@@ -96,13 +84,12 @@ const Homepage = ({ projects }) => {
         h1 {
         }
       `}
-      </style>
-    </>
-  );
-};
+    </style>
+  </>
+);
 
 export async function getStaticProps({ preview = false }) {
-  const projects = (await getCurrentProjects(preview)) ?? [];
+  const projects = await getCurrentProjects(preview);
   return {
     props: { preview, projects },
   };

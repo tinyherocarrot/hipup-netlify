@@ -44,12 +44,10 @@ const NavLinks = ({ projects }) => {
             Projects
           </MenuButton>
           <Menu {...projectMenu} aria-label="Projects">
-            <MenuItem as="a" href="#" {...projectMenu}>Settings</MenuItem>
-            <MenuItem as="a" href="#" {...projectMenu}>
-              Extensions
-            </MenuItem>
+            <MenuItem as="a" href="#" {...projectMenu}>Project A</MenuItem>
+            <MenuItem as="a" href="#" {...projectMenu}>Project B</MenuItem>
             <MenuSeparator {...projectMenu} />
-            <MenuItem as="a" href="#" {...projectMenu}>Past Projects</MenuItem>
+            <MenuItem as="a" href="/past-projects" {...projectMenu}>Past Projects</MenuItem>
           </Menu>
           <Link href="/publications" aria-label="Publications" passHref>
             <a className="page-link">Publications</a>
