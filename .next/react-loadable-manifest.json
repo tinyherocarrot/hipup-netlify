@@ -1,11 +1,23 @@
 {
   "./NavLinks": [
     {
+      "id": "./components/Button.jsx",
+      "file": "static/chunks/0.js"
+    },
+    {
       "id": "./components/NavLinks.jsx",
       "file": "static/chunks/0.js"
     },
     {
       "id": "./node_modules/@babel/runtime/helpers/esm/extends.js",
+      "file": "static/chunks/0.js"
+    },
+    {
+      "id": "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js",
+      "file": "static/chunks/0.js"
+    },
+    {
+      "id": "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js",
       "file": "static/chunks/0.js"
     },
     {

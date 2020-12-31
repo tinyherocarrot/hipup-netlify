@@ -3,10 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 
-// import Header from './Header';
-
 import Footer from './Footer';
-
 import homeContent from '../data/homepage.json';
 
 const NavLinks = dynamic(() => import('./NavLinks'), {
@@ -34,26 +31,46 @@ const Layout = ({ children, projectSlugs }) => (
         </Link>
       </div>
       <NavLinks projectSlugs={projectSlugs} />
-
     </div>
     <div className="content">{children}</div>
     <Footer />
 
     <style jsx>
       {`
-      .content {
-        box-sizing: border-box;
-        max-width: 100%;
-      }
-    `}
+        .header-container {
+          padding: 2.2rem;
+          width: 100%;
+          height: 5rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          box-sizing: border-box;
+          border-bottom: solid 5px rgba(75, 143, 204, 0.8);
+        }
+
+        .logo-container {
+          margin-left: 1rem;
+          cursor: pointer;
+          margin-bottom: 1rem;
+        }
+
+        .hipup-logo {
+          max-width: 140px;
+          margin: 1rem 0 0 0;
+        }
+        .content {
+          box-sizing: border-box;
+          max-width: 100%;
+        }
+      `}
     </style>
     <style jsx global>
       {`
       html {
         height: 100%;
+        width: 100%;
         padding: 0px;
         margin: 0px;
-        box-sizing: border-box;
       }
       body {
         font-family: "Noto Sans TC", sans-serif;
@@ -86,26 +103,6 @@ const Layout = ({ children, projectSlugs }) => (
         font-weight: lighter;
       }
 
-       .header-container {
-          padding: 2.2rem;
-          width: 100%;
-          height: 5rem;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-          border-bottom: solid 5px rgba(75, 143, 204, 0.8);
-        }
-
-        .logo-container {
-          margin-left: 1rem;
-          cursor: pointer;
-          margin-bottom: 1rem;
-        }
-
-        .hipup-logo {
-          max-width: 140px;
-          margin: 1rem 0 0 0 ;
-        }
     `}
     </style>
   </div>

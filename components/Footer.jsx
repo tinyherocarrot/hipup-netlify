@@ -27,15 +27,11 @@ const Footer = () => (
     <style jsx>
       {`
           .footer-container {
-            background: rgb(255, 255, 255);
-            background: linear-gradient(
-              129deg,
-              rgba(255, 255, 255, 1) 60%,
-              rgba(113, 165, 214, 1) 100%
-            );
+            background: rgba(113, 165, 214, 1) 100%;
             position: absolute;
             bottom: 0;
-            padding: 2rem;
+            padding: 0 1rem;
+            box-sizing: border-box;
             height: auto;
             width: 100%;
             display: flex;
@@ -50,28 +46,6 @@ const Footer = () => (
             max-height: 100px;
           }
         `}
-    </style>
-    <style jsx global>
-      {`
-        *,
-        *:before,
-        *:after {
-          box-sizing: inherit;
-        }
-        html{
-          height:100%:
-          padding:0px;
-          margin:0px;
-          box-sizing: border-box;
-        }
-        body {
-          position: relative;
-          margin: 0;
-          padding-bottom: 12rem;
-          min-height: 100%;
-        }
-        
-      `}
     </style>
   </footer>
 );

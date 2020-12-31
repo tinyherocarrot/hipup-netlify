@@ -6,8 +6,8 @@ import {
   MenuItem,
   MenuButton,
   MenuSeparator,
-  Button,
 } from 'reakit';
+import Button from './Button';
 
 const NavLinks = ({ projectSlugs }) => {
   const [menuOpen, toggleMenuOpen] = useState(false);
@@ -38,6 +38,7 @@ const NavLinks = ({ projectSlugs }) => {
             {projectSlugs.map(({ sys: { id }, projectName, slug }) => (
               <MenuItem
                 as="a"
+                className="page-link"
                 href={`/projects/${slug}`}
                 key={id}
                 {...projectMenu}
@@ -72,14 +73,12 @@ const NavLinks = ({ projectSlugs }) => {
         .page-link {
           color: black;
           padding: 0.6rem;
-          margin-left: 2rem;
           pointer: cursor;
           border-bottom: 2px solid transparent;
           transition: border-bottom 0.5s, color 0.4s;
         }
 
         .page-link:hover {
-          border-bottom: 2px solid rgba(75, 143, 204, 1);
           color: rgba(75, 143, 204, 1);
         }
 
