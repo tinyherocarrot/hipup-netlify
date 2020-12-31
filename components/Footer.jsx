@@ -1,26 +1,31 @@
-import React from "react";
-import homeContent from "../data/homepage.json";
+import React from 'react';
+import homeContent from '../data/homepage.json';
 
-const Footer = () => {
-  return (
-    <footer className="footer-container">
-      <div>
-        <img
-          src={homeContent[0].fields.phiLogo.fields.file.url}
-          alt="PHI Logo"
-          className="phi-logo"
-        />
-      </div>
-      <address>
-        <p>
-          Public Health Institute <br />
-          555 12th St, <br />
-          Oakland, CA 94607 <br />
-        </p>
-      </address>
+const Footer = () => (
+  <footer className="footer-container">
+    <div>
+      <img
+        src={homeContent[0].fields.phiLogo.fields.file.url}
+        alt="PHI Logo"
+        className="phi-logo"
+      />
+    </div>
+    <address>
+      <p>
+        Public Health Institute
+        {' '}
+        <br />
+        555 12th St,
+        {' '}
+        <br />
+        Oakland, CA 94607
+        {' '}
+        <br />
+      </p>
+    </address>
 
-      <style jsx>
-        {`
+    <style jsx>
+      {`
           .footer-container {
             background: rgb(255, 255, 255);
             background: linear-gradient(
@@ -45,8 +50,9 @@ const Footer = () => {
             max-height: 100px;
           }
         `}
-      </style>
-      <style jsx global>{`
+    </style>
+    <style jsx global>
+      {`
         *,
         *:before,
         *:after {
@@ -65,9 +71,9 @@ const Footer = () => {
           min-height: 100%;
         }
         
-      `}</style>
-    </footer>
-  );
-};
+      `}
+    </style>
+  </footer>
+);
 
 export default Footer;

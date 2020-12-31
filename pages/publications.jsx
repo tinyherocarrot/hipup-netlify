@@ -3,16 +3,10 @@ import Head from 'next/head';
 
 import PublicationsCategories from './publications/PublicationsCategories';
 import PublicationsList from './publications/PublicationsList';
-import { getPublicationsAndCategories } from '../lib/api';
+import { getPublicationsAndCategories, getProjectsWithSlugs } from '../lib/api';
+import { getLayout } from '../components/Layout';
 
-export async function getStaticProps({ preview = false }) {
-  const { publications, categories } = await getPublicationsAndCategories(preview);
-  return {
-    props: { publications, categories },
-  };
-}
-
-const PublicationsPage = ({ publications, categories }) => {
+const Publications = ({ publications, categories }) => {
   const [currentCategory, changeCategory] = useState('All Publications');
   const filteredPublications = useMemo(() => publications
     .filter(({ publicationCategoryCollection: { items } }) => {
@@ -84,4 +78,14 @@ const PublicationsPage = ({ publications, categories }) => {
   );
 };
 
-export default PublicationsPage;
+export async function getStaticProps({ preview = false }) {
+  const { publications, categories } = await getPublicationsAndCategories(preview);
+  const projectSlugs = await getProjectsWithSlugs(preview);
+  return {
+    props: { publications, categories, projectSlugs },
+  };
+}
+
+Publications.getLayout = getLayout;
+
+export default Publications;

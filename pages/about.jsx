@@ -3,7 +3,8 @@ import Head from 'next/head';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import homeContent from '../data/homepage.json';
-import { getAboutContent } from '../lib/api';
+import { getAboutContent, getProjectsWithSlugs } from '../lib/api';
+import { getLayout } from '../components/Layout';
 
 const About = ({ missionStatement, teamPhoto }) => (
   <>
@@ -30,11 +31,14 @@ const About = ({ missionStatement, teamPhoto }) => (
 
 export async function getStaticProps({ preview = false }) {
   const { missionStatement, teamPhoto } = await getAboutContent(preview);
+  const projectSlugs = await getProjectsWithSlugs(preview);
   return {
     props: {
-      preview, missionStatement, teamPhoto,
+      preview, missionStatement, teamPhoto, projectSlugs,
     },
   };
 }
+
+About.getLayout = getLayout;
 
 export default About;

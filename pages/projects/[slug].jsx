@@ -6,6 +6,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import { getProjectsWithSlugs, getProject } from '../../lib/api';
 import ContactForm from '../../components/ContactForm';
+import { getLayout } from '../../components/Layout';
 
 const Project = ({ project }) => {
   const router = useRouter();
@@ -57,30 +58,6 @@ const Project = ({ project }) => {
               <p>{p?.bio}</p>
             </div>
           ))}
-          {/*
-          <div className="profile-card">
-            <img
-              className="profile-pic"
-              src="https://via.placeholder.com/150.png?text=Cover+Image"
-              alt=""
-            />
-            <p>
-              Eva Lee
-              <br />
-              Health Educator
-              <br />I love to cook~
-            </p>
-          </div>
-          <div className="profile-card">
-            <img
-              className="profile-pic"
-              src="https://via.placeholder.com/150.png?text=Cover+Image"
-              alt=""
-            />
-            <p>Eva Lee</p>
-            <p>Health Educator</p>
-            <p>I love to cook~</p>
-          </div> */}
         </div>
       </section>
       <section className="centered-margined">
@@ -154,13 +131,16 @@ export async function getStaticPaths({ preview = false }) {
 }
 
 // This also gets called at build time
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, preview = false }) {
   // params contains the project `slug`.
   // If the route is like /project/1, then params.slug is 1
   const project = await getProject(params.slug);
+  const projectSlugs = await getProjectsWithSlugs(preview);
 
   // Pass project data to the page via props
-  return { props: { project } };
+  return { props: { project, projectSlugs } };
 }
+
+Project.getLayout = getLayout;
 
 export default Project;

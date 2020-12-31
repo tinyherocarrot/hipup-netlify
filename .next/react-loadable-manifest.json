@@ -5,14 +5,6 @@
       "file": "static/chunks/0.js"
     },
     {
-      "id": "./lib/api.js",
-      "file": "static/chunks/0.js"
-    },
-    {
-      "id": "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js",
-      "file": "static/chunks/0.js"
-    },
-    {
       "id": "./node_modules/@babel/runtime/helpers/esm/extends.js",
       "file": "static/chunks/0.js"
     },

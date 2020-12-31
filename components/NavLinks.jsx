@@ -9,16 +9,7 @@ import {
   Button,
 } from 'reakit';
 
-import { getCurrentProjects } from '../lib/api';
-
-export async function getStaticProps({ preview = false }) {
-  const projects = (await getCurrentProjects(preview)) ?? [];
-  return {
-    props: { preview, projects },
-  };
-}
-
-const NavLinks = ({ projects }) => {
+const NavLinks = ({ projectSlugs }) => {
   const [menuOpen, toggleMenuOpen] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
   const projectMenu = useMenuState();
@@ -44,8 +35,16 @@ const NavLinks = ({ projects }) => {
             Projects
           </MenuButton>
           <Menu {...projectMenu} aria-label="Projects">
-            <MenuItem as="a" href="#" {...projectMenu}>Project A</MenuItem>
-            <MenuItem as="a" href="#" {...projectMenu}>Project B</MenuItem>
+            {projectSlugs.map(({ sys: { id }, projectName, slug }) => (
+              <MenuItem
+                as="a"
+                href={`/projects/${slug}`}
+                key={id}
+                {...projectMenu}
+              >
+                {projectName}
+              </MenuItem>
+            ))}
             <MenuSeparator {...projectMenu} />
             <MenuItem as="a" href="/past-projects" {...projectMenu}>Past Projects</MenuItem>
           </Menu>

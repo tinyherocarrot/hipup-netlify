@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 
-import ProjectLink from '../components/ProjectLink';
+import { getPastProjects, getProjectsWithSlugs } from '../lib/api';
+import { getLayout } from '../components/Layout';
 
-// TODO: Fetch this data with getStaticProps
-import currentProjects from '../data/currentProjects.json';
-import pastProjects from '../data/pastProjects.json';
-
-const PastProjects = () => {
+const PastProjects = ({ projects }) => {
   return (
     <>
       <Head>
@@ -15,39 +12,42 @@ const PastProjects = () => {
       </Head>
       <h1> PAST PROJECTS </h1>
       <>
-    {pastProjects
-      .sort((curr, next) => {
-        const currDate = new Date(curr.fields.endDate);
-        const nextDate = new Date(next.fields.endDate);
-        if (currDate < nextDate) {
-          return -1;
-        } if (currDate > nextDate) {
-          return 1;
-        }
-        return 0;
-      })
-      .map(
-        ({
-          fields: {
-            projectName, startDate, endDate, description, grantDetails,
-          }, sys: { id },
-        }) => (
-          <article key={id}>
-            <small>
-              {startDate.slice(0, 4)}
-              {' '}
-              -
-              {endDate.slice(0, 4)}
-            </small>
-            <h2>{projectName}</h2>
-            <p className="font-light">{description}</p>
-            <small>
-              <i>{grantDetails}</i>
-            </small>
-          </article>
-        ),
-      )}
-  </>
+        {projects
+          .sort((curr, next) => {
+            const currDate = new Date(curr.fields.endDate);
+            const nextDate = new Date(next.fields.endDate);
+            if (currDate < nextDate) {
+              return -1;
+            } if (currDate > nextDate) {
+              return 1;
+            }
+            return 0;
+          })
+          .map(
+            ({
+              projectName,
+              startDate,
+              endDate,
+              description,
+              grantDetails,
+              sys: { id },
+            }) => (
+              <article key={id}>
+                <small>
+                  {startDate.slice(0, 4)}
+                  {' '}
+                  -
+                  {endDate.slice(0, 4)}
+                </small>
+                <h2>{projectName}</h2>
+                <p className="font-light">{description}</p>
+                <small>
+                  <i>{grantDetails}</i>
+                </small>
+              </article>
+            ),
+          )}
+    </>
 
       <style jsx>
         {`
@@ -80,5 +80,15 @@ const PastProjects = () => {
     </>
   );
 };
+
+export async function getStaticProps({ preview = false }) {
+  const projects = await getPastProjects(preview);
+  const projectSlugs = await getProjectsWithSlugs(preview);
+  return {
+    props: { projects, projectSlugs }
+  }
+}
+
+PastProjects.getLayout = getLayout;
 
 export default PastProjects;

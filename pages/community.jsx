@@ -1,7 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
 
-import { getCommunityEvents } from '../lib/api';
+import { getCommunityEvents, getProjectsWithSlugs } from '../lib/api';
+import { getLayout } from '../components/Layout';
 
 const Community = ({ events }) => (
   <>
@@ -31,10 +32,13 @@ const Community = ({ events }) => (
 );
 
 export async function getStaticProps({ preview = false }) {
-  const events = await getCommunityEvents(preview) || [];
+  const events = await getCommunityEvents(preview);
+  const projectSlugs = await getProjectsWithSlugs(preview);
   return {
-    props: { events },
+    props: { events, projectSlugs },
   };
 }
+
+Community.getLayout = getLayout;
 
 export default Community;

@@ -3,7 +3,8 @@ import Head from 'next/head';
 
 import ProjectLink from '../components/ProjectLink';
 import homeContent from '../data/homepage.json';
-import { getCurrentProjects } from '../lib/api';
+import { getCurrentProjects, getProjectsWithSlugs } from '../lib/api';
+import { getLayout } from '../components/Layout';
 
 const Homepage = ({ projects }) => (
   <>
@@ -90,9 +91,12 @@ const Homepage = ({ projects }) => (
 
 export async function getStaticProps({ preview = false }) {
   const projects = await getCurrentProjects(preview);
+  const projectSlugs = await getProjectsWithSlugs(preview);
   return {
-    props: { preview, projects },
+    props: { preview, projects, projectSlugs },
   };
 }
+
+Homepage.getLayout = getLayout;
 
 export default Homepage;
