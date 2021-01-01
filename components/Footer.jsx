@@ -1,5 +1,6 @@
 import React from 'react';
 import homeContent from '../data/homepage.json';
+// TODO: refactor to get staticProps
 
 const Footer = () => (
   <footer className="footer-container">

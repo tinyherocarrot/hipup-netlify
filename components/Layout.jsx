@@ -11,7 +11,7 @@ const NavLinks = dynamic(() => import('./NavLinks'), {
 });
 
 const Layout = ({ children, projectSlugs }) => (
-  <div>
+  <div className="wrapper">
     <Head>
       <link
         href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,500|Playfair+Display:700&display=swap"
@@ -37,6 +37,12 @@ const Layout = ({ children, projectSlugs }) => (
 
     <style jsx>
       {`
+
+      .wrapper {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
         .header-container {
           padding: 2.2rem;
           width: 100%;

@@ -1,11 +1,14 @@
 import React from 'react';
+import { Button } from 'reakit';
 
-const Button = ({ children, ...otherProps }) => (
-  <a {...otherProps}>
+const MyButton = ({ children, ...otherProps }) => (
+  <Button className="styled-button" {...otherProps}>
     {children}
     <style jsx>
       {`
-        a {
+        styled-button {
+          font-family: inherit;
+          background-color: rgba(113, 165, 214, 1) 100%;
           position: relative;
           display: inline-block;
           text-align: center;
@@ -15,16 +18,16 @@ const Button = ({ children, ...otherProps }) => (
           font-size: 1rem;
           transition: transform 0.2s;
         }
-        a:hover {
+        styled-button:hover {
           cursor: pointer;
           transform: scale(1.03)
         }
-        a:focus {
+        styled-button:focus {
           outline: none;
         }
       `}
     </style>
-  </a>
+  </Button>
 );
 
-export default Button;
+export default MyButton;
